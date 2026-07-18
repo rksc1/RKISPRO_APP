@@ -10,6 +10,7 @@ import '../global.css';
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import { AuthProvider, useAuth } from '@/providers/AuthProvider';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import Toast from 'react-native-toast-message';
 
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
@@ -63,6 +64,7 @@ export default function RootLayout() {
     <ErrorBoundary>
       <AuthProvider>
         <RootLayoutNav />
+        <Toast />
       </AuthProvider>
     </ErrorBoundary>
   );

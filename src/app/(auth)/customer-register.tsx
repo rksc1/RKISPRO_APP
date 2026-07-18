@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, KeyboardAvoidingView, Platform, ScrollView, Alert, TouchableOpacity, Image } from 'react-native';
+import { View, Text, KeyboardAvoidingView, Platform, ScrollView, TouchableOpacity, Image } from 'react-native';
 import { router, Link } from 'expo-router';
+import Toast from 'react-native-toast-message';
 import { supabase } from '@/lib/supabase';
 import { Input } from '@/components/ui/Input';
 import { Button } from '@/components/ui/Button';
@@ -21,7 +22,11 @@ export default function CustomerRegisterScreen() {
 
   const handleRegister = async () => {
     if (!fullName || !email || !password || !phone || !city || !state) {
-      Alert.alert('Error', 'Please fill in all required fields');
+      Toast.show({
+        type: 'error',
+        text1: 'Error',
+        text2: 'Please fill in all required fields',
+      });
       return;
     }
 
@@ -38,7 +43,11 @@ export default function CustomerRegisterScreen() {
     });
 
     if (error) {
-      Alert.alert('Registration Failed', error.message);
+      Toast.show({
+        type: 'error',
+        text1: 'Registration Failed',
+        text2: error.message,
+      });
       setLoading(false);
     } else if (data.user) {
       try {
@@ -53,7 +62,11 @@ export default function CustomerRegisterScreen() {
         router.replace('/(tabs)');
       } catch (err: any) {
         setLoading(false);
-        Alert.alert('Profile Creation Failed', err.message);
+        Toast.show({
+          type: 'error',
+          text1: 'Profile Creation Failed',
+          text2: err.message,
+        });
       }
     }
   };
