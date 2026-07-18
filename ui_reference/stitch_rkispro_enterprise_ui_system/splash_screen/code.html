@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>RKISPro - Splash Screen</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#00696e",
+                        "on-primary": "#003739",
+                        "tertiary-container": "#00c4cc",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#2a1700",
+                        "secondary": "#ffb95f",
+                        "primary-fixed": "#63f7ff",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#00c4cc",
+                        "tertiary": "#00e2eb",
+                        "on-tertiary": "#003739",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "surface-tint": "#3cdae2",
+                        "on-primary-container": "#004c4f",
+                        "secondary-container": "#ee9800",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#cce6f7",
+                        "surface-container-highest": "#1e3844",
+                        "tertiary-fixed-dim": "#00dce4",
+                        "on-tertiary-container": "#004c4f",
+                        "on-surface": "#cce6f7",
+                        "surface-container-low": "#021e2a",
+                        "on-tertiary-fixed": "#002021",
+                        "on-secondary-container": "#5b3800",
+                        "primary": "#45e0e8",
+                        "outline": "#859394",
+                        "surface-container": "#06222e",
+                        "secondary-fixed": "#ffddb8",
+                        "inverse-on-surface": "#1a3340",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "surface-dim": "#001620",
+                        "surface-bright": "#233c49",
+                        "on-secondary": "#472a00",
+                        "surface": "#001620",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#3cdae2",
+                        "background": "#001620",
+                        "on-background": "#cce6f7",
+                        "surface-container-high": "#132d39",
+                        "on-tertiary-fixed-variant": "#004f53",
+                        "surface-variant": "#1e3844",
+                        "on-primary-fixed": "#002021",
+                        "surface-container-lowest": "#001019",
+                        "on-primary-fixed-variant": "#004f53",
+                        "outline-variant": "#3c494a",
+                        "on-surface-variant": "#bbc9ca",
+                        "tertiary-fixed": "#61f7ff"
+                    },
+                    "fontFamily": {
+                        "display-md": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "display-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        @keyframes mesh-pulse {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.4; }
+            50% { transform: scale(1.2) translate(10%, -5%); opacity: 0.6; }
+            100% { transform: scale(1) translate(0, 0); opacity: 0.4; }
+        }
+        .mesh-gradient {
+            background: radial-gradient(circle at 20% 30%, rgba(69, 224, 232, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(0, 196, 204, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(2, 16, 25, 1) 0%, rgba(0, 16, 25, 1) 100%);
+        }
+        .mesh-blob {
+            filter: blur(80px);
+            animation: mesh-pulse 10s infinite ease-in-out;
+        }
+        .loading-bar-fill {
+            transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center overflow-hidden font-body-md">
+<!-- Ambient Background -->
+<div class="fixed inset-0 z-0 mesh-gradient">
+<div class="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-primary/20 rounded-full mesh-blob"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-tertiary/10 rounded-full mesh-blob" style="animation-delay: -5s;"></div>
+</div>
+<!-- Main Content Container -->
+<main class="relative z-10 flex flex-col items-center justify-between h-screen w-full max-w-md px-margin-mobile py-24">
+<!-- Top Spacer for centering logo -->
+<div class="flex-1"></div>
+<!-- Central Branding -->
+<div class="flex flex-col items-center space-y-lg animate-in fade-in zoom-in duration-1000">
+<!-- Logo with Ambient Glow -->
+<div class="relative group">
+<div class="absolute inset-0 bg-primary/30 blur-2xl rounded-full scale-75 group-hover:scale-110 transition-transform duration-700"></div>
+<img alt="RKISPro Logo" class="relative w-32 h-32 md:w-40 md:h-40 object-contain drop-shadow-[0_0_20px_rgba(69,224,232,0.3)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7c5Y-e8v7ZOhHtqPv4JXQtdHh-EWBGoKsw712mDtcPtU_iar9--YtLidWmHo-KXo621Nj_u649b0FtI2v1KMRpylRSc_pbBx3uVdsgAO2coVHCEX_h9ZKoxrM_wOw_UYMJDQunEDbVuBciW8uo3-vhXNzSoWcYFeY5okJsR7PPnwdJ1y3pQAin4kXkf6fnhTb6hZOgCR_njP6diMDGswDjHoK_ysCcOO-EZJWJz60qjwuF83Vl5NMm4PoY5LdYY3spOZJMAtOSrZl"/>
+</div>
+<!-- Tagline -->
+<div class="text-center space-y-sm">
+<h1 class="font-display-md text-display-md text-on-surface tracking-tight">
+                    Build Smarter. Source Faster.
+                </h1>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase tracking-[0.2em] opacity-60">
+                    Enterprise Marketplace
+                </p>
+</div>
+</div>
+<!-- Footer / Loading Area -->
+<div class="flex-1 flex flex-col justify-end w-full space-y-xl">
+<!-- Loading Indicator -->
+<div class="w-full space-y-md">
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary loading-bar-fill shadow-[0_0_12px_rgba(69,224,232,0.5)]" id="loadingBar" style="width: 0%"></div>
+</div>
+<div class="flex justify-between items-center opacity-40">
+<span class="font-caption text-caption uppercase tracking-wider">System Ready</span>
+<span class="font-caption text-caption" id="loadingPercent">0%</span>
+</div>
+</div>
+<!-- Trust Badges / Version -->
+<div class="flex flex-col items-center space-y-xs pb-md">
+<div class="flex items-center gap-xs text-on-surface-variant/40">
+<span class="material-symbols-outlined text-[14px]">shield_with_heart</span>
+<span class="font-caption text-caption">Secure B2B Environment</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant/30">v2.4.0-stable</span>
+</div>
+</div>
+</main>
+<!-- Micro-interactions Script -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const bar = document.getElementById('loadingBar');
+            const percent = document.getElementById('loadingPercent');
+            
+            // Artificial delay to mimic splash experience
+            setTimeout(() => {
+                bar.style.width = '100%';
+                
+                let start = 0;
+                const duration = 1500; // Match CSS transition
+                const stepTime = 15;
+                const increment = 100 / (duration / stepTime);
+                
+                const timer = setInterval(() => {
+                    start += increment;
+                    if (start >= 100) {
+                        percent.textContent = '100%';
+                        clearInterval(timer);
+                        
+                        // Subtle success "ping" after load
+                        setTimeout(() => {
+                            bar.classList.add('brightness-150');
+                            setTimeout(() => bar.classList.remove('brightness-150'), 200);
+                        }, 100);
+                    } else {
+                        percent.textContent = Math.floor(start) + '%';
+                    }
+                }, stepTime);
+            }, 300);
+
+            // Add subtle parallax to blobs based on gyro/mouse if available
+            window.addEventListener('mousemove', (e) => {
+                const moveX = (e.clientX - window.innerWidth / 2) / 50;
+                const moveY = (e.clientY - window.innerHeight / 2) / 50;
+                document.querySelectorAll('.mesh-blob').forEach((blob, index) => {
+                    const factor = index === 0 ? 1 : -1;
+                    blob.style.transform = `translate(${moveX * factor}px, ${moveY * factor}px)`;
+                });
+            });
+        });
+    </script>
+</body></html>

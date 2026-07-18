@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RKISPro Admin Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --glass-bg: rgba(10, 24, 37, 0.7);
+            --glass-border: rgba(30, 52, 68, 0.4);
+        }
+        body {
+            background-color: #001620;
+            color: #cce6f7;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+        }
+        .teal-glow {
+            box-shadow: 0 0 15px rgba(69, 224, 232, 0.2);
+        }
+        .swipe-container {
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            display: flex;
+            scroll-snap-type: x mandatory;
+        }
+        .swipe-container::-webkit-scrollbar { display: none; }
+        .swipe-item {
+            min-width: 100%;
+            scroll-snap-align: start;
+        }
+        .chart-bar {
+            transition: height 1s ease-out;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#45e0e8",
+                        "primary-container": "#00c4cc",
+                        "on-primary-container": "#004c4f",
+                        "secondary": "#ffb95f",
+                        "secondary-container": "#ee9800",
+                        "surface": "#001620",
+                        "surface-container": "#06222e",
+                        "surface-container-high": "#132d39",
+                        "surface-variant": "#1e3844",
+                        "on-surface": "#cce6f7",
+                        "on-surface-variant": "#bbc9ca",
+                        "outline-variant": "#3c494a",
+                        "error": "#ffb4ab",
+                    },
+                    spacing: {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "40px",
+                        "xs": "4px",
+                        "sm": "8px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "32px",
+                    },
+                    fontFamily: {
+                        "display-md": ["Plus Jakarta Sans"],
+                        "display-sm": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "body-md": ["Inter"],
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-24 md:pb-0">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm flex items-center justify-between px-margin-mobile h-16">
+<div class="flex items-center gap-sm">
+<h1 class="font-display-md text-display-md font-bold text-primary tracking-tight">RKISPro</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95">notifications</button>
+<div class="w-8 h-8 rounded-full border border-primary/30 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a construction project manager in their late 40s, wearing a high-visibility vest over a charcoal tactical shirt. The lighting is dramatic and cinematic, with cool blue ambient tones reflecting the high-tech RKISPro dashboard environment. The focus is sharp on the subject against a softly blurred industrial office background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpqktD4lfwrBhaQXr8r-TPqlowFixcGH-G-151TAv1ln7cWFWjxvgfP9nk0TuDJAlAShvE9wu-JqMohlNvMR_j22M_RWCUMPtQezG9xENQlwdupsIfxiExK-pxOvOwYTbYwTfd4zv_CHHCokiEM0zajHZpssHbhEzNdRgX3rdnC8Wnq3LjfRZZBKG1oG6QtY76mRFd2mAneLAy-WPKcSJ4GsNNyIv27YigAlz4Qp693rT-Zwyi77DILvwd82eOqculzOVI8O8NkMiZ"/>
+</div>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto space-y-xl">
+<!-- Hero Shader Background -->
+<div class="fixed inset-0 -z-10 opacity-30 pointer-events-none">
+
+</div>
+<!-- KPI Grid -->
+<section class="grid grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Total Revenue -->
+<div class="glass-card p-md rounded-xl space-y-sm">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="text-primary font-label-md bg-primary/10 px-2 py-0.5 rounded-full text-[10px]">+12.5%</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-caption uppercase tracking-wider">Revenue</p>
+<h3 class="text-display-sm font-display text-white">$428.5k</h3>
+</div>
+</div>
+<!-- Active Projects -->
+<div class="glass-card p-md rounded-xl space-y-sm">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">construction</span>
+<span class="text-secondary font-label-md bg-secondary/10 px-2 py-0.5 rounded-full text-[10px]">Active</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-caption uppercase tracking-wider">Projects</p>
+<h3 class="text-display-sm font-display text-white">24</h3>
+</div>
+</div>
+<!-- Requests -->
+<div class="glass-card p-md rounded-xl space-y-sm">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">request_quote</span>
+<span class="text-primary-container font-label-md bg-primary-container/10 px-2 py-0.5 rounded-full text-[10px]">8 New</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-caption uppercase tracking-wider">Requests</p>
+<h3 class="text-display-sm font-display text-white">156</h3>
+</div>
+</div>
+<!-- Compliance -->
+<div class="glass-card p-md rounded-xl space-y-sm">
+<div class="flex justify-between items-start">
+<span class="material-symbols-outlined text-on-surface" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="text-on-surface font-label-md bg-on-surface/10 px-2 py-0.5 rounded-full text-[10px]">98%</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label-md text-caption uppercase tracking-wider">Safety Rating</p>
+<h3 class="text-display-sm font-display text-white">A+</h3>
+</div>
+</div>
+</section>
+<!-- Revenue vs Activity Chart -->
+<section class="glass-card p-lg rounded-xl">
+<div class="flex justify-between items-center mb-lg">
+<h2 class="text-display-sm font-display text-white">Revenue vs. Activity</h2>
+<div class="flex gap-md text-caption font-label-md">
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span>Revenue</span>
+</div>
+<div class="flex items-center gap-xs">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span>Activity</span>
+</div>
+</div>
+</div>
+<div class="h-64 flex items-end justify-between gap-2 md:gap-4 px-2">
+<!-- Bar generation loop (mock data) -->
+<script>
+                    const chartContainer = document.currentScript.parentElement;
+                    const data = [
+                        {rev: 40, act: 60}, {rev: 70, act: 45}, {rev: 55, act: 80},
+                        {rev: 90, act: 30}, {rev: 35, act: 95}, {rev: 65, act: 50},
+                        {rev: 85, act: 75}, {rev: 50, act: 40}
+                    ];
+                    data.forEach(item => {
+                        const group = document.createElement('div');
+                        group.className = 'flex-1 flex items-end gap-1 h-full max-w-[40px]';
+                        group.innerHTML = `
+                            <div class="chart-bar w-full bg-primary/80 rounded-t-sm" style="height: 0%" data-height="${item.rev}%"></div>
+                            <div class="chart-bar w-full bg-secondary/80 rounded-t-sm" style="height: 0%" data-height="${item.act}%"></div>
+                        `;
+                        chartContainer.appendChild(group);
+                    });
+                    
+                    window.addEventListener('DOMContentLoaded', () => {
+                        setTimeout(() => {
+                            document.querySelectorAll('.chart-bar').forEach(bar => {
+                                bar.style.height = bar.getAttribute('data-height');
+                            });
+                        }, 300);
+                    });
+                </script>
+</div>
+<div class="flex justify-between mt-4 text-on-surface-variant font-label-md text-[10px]">
+<span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span><span>AVG</span>
+</div>
+</section>
+<div class="grid lg:grid-cols-2 gap-xl">
+<!-- Pending Approvals (Swipe Action UI) -->
+<section class="space-y-md">
+<h2 class="text-display-sm font-display text-white flex items-center gap-sm">
+                    Pending Approvals
+                    <span class="bg-secondary text-on-secondary px-2 py-0.5 rounded-full text-caption">3</span>
+</h2>
+<div class="space-y-sm">
+<!-- Swipe Item 1 -->
+<div class="relative group overflow-hidden rounded-xl">
+<div class="absolute inset-0 flex">
+<div class="w-1/2 bg-red-500/20 flex items-center px-lg text-error">
+<span class="material-symbols-outlined">close</span>
+</div>
+<div class="w-1/2 bg-primary/20 flex items-center justify-end px-lg text-primary">
+<span class="material-symbols-outlined">check</span>
+</div>
+</div>
+<div class="relative swipe-item glass-card p-md flex items-center justify-between translate-x-0 transition-transform cursor-grab active:cursor-grabbing">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">devices</span>
+</div>
+<div>
+<h4 class="text-body-md font-semibold text-white">Concrete Supply #882</h4>
+<p class="text-caption text-on-surface-variant">Vendor: BuildLink Co. • $12,450.00</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant">chevron_right</button>
+</div>
+</div>
+<!-- Swipe Item 2 -->
+<div class="relative group overflow-hidden rounded-xl">
+<div class="absolute inset-0 flex">
+<div class="w-1/2 bg-red-500/20 flex items-center px-lg text-error">
+<span class="material-symbols-outlined">close</span>
+</div>
+<div class="w-1/2 bg-primary/20 flex items-center justify-end px-lg text-primary">
+<span class="material-symbols-outlined">check</span>
+</div>
+</div>
+<div class="relative swipe-item glass-card p-md flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">engineering</span>
+</div>
+<div>
+<h4 class="text-body-md font-semibold text-white">Site Access Request</h4>
+<p class="text-caption text-on-surface-variant">Unit 4B • High-Voltage Team</p>
+</div>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant">chevron_right</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity -->
+<section class="space-y-md">
+<h2 class="text-display-sm font-display text-white">Recent Activity</h2>
+<div class="glass-card rounded-xl divide-y divide-outline-variant/20 overflow-hidden">
+<div class="p-md hover:bg-surface-variant/30 transition-colors flex gap-md">
+<div class="w-2 h-2 mt-2 rounded-full bg-primary shrink-0"></div>
+<div>
+<p class="text-body-sm text-white"><span class="font-bold text-primary">Sarah K.</span> updated safety report for <span class="text-secondary">Harbor Plaza</span></p>
+<p class="text-caption text-on-surface-variant">12 minutes ago</p>
+</div>
+</div>
+<div class="p-md hover:bg-surface-variant/30 transition-colors flex gap-md">
+<div class="w-2 h-2 mt-2 rounded-full bg-secondary shrink-0"></div>
+<div>
+<p class="text-body-sm text-white"><span class="font-bold">Automated Alert:</span> Material shortage detected for Steel Rebar</p>
+<p class="text-caption text-on-surface-variant">2 hours ago</p>
+</div>
+</div>
+<div class="p-md hover:bg-surface-variant/30 transition-colors flex gap-md">
+<div class="w-2 h-2 mt-2 rounded-full bg-outline-variant shrink-0"></div>
+<div>
+<p class="text-body-sm text-white">Project <span class="text-primary">Bridge #12</span> moved to Phase 3 (Foundation)</p>
+<p class="text-caption text-on-surface-variant">4 hours ago</p>
+</div>
+</div>
+<div class="p-md text-center">
+<button class="text-primary font-label-md hover:underline">View All Activity</button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] flex justify-around items-center h-20 px-2 pb-safe">
+<div class="flex flex-col items-center justify-center gap-xs bg-primary-container/20 text-primary rounded-xl px-4 py-1 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">construction</span>
+<span class="font-label-md text-label-md">Projects</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">request_quote</span>
+<span class="font-label-md text-label-md">Requests</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Finance</span>
+</div>
+</nav>
+<!-- FAB (Contextual for Dashboard) -->
+<button class="fixed bottom-24 right-6 md:bottom-10 md:right-10 w-14 h-14 bg-gradient-to-tr from-primary to-primary-container text-on-primary rounded-full shadow-lg shadow-primary/20 flex items-center justify-center teal-glow hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined font-bold">add</span>
+</button>
+<script>
+        // Simple swipe-to-approve simulation logic
+        document.querySelectorAll('.swipe-item').forEach(item => {
+            let startX;
+            let currentX = 0;
+            
+            item.addEventListener('touchstart', e => {
+                startX = e.touches[0].clientX;
+            });
+            
+            item.addEventListener('touchmove', e => {
+                const x = e.touches[0].clientX - startX;
+                if (Math.abs(x) < 100) {
+                    item.style.transform = `translateX(${x}px)`;
+                }
+            });
+            
+            item.addEventListener('touchend', e => {
+                const finalX = e.changedTouches[0].clientX - startX;
+                if (finalX > 80) {
+                    // Approved action
+                    item.style.transform = 'translateX(100%)';
+                    setTimeout(() => item.parentElement.remove(), 300);
+                } else if (finalX < -80) {
+                    // Rejected action
+                    item.style.transform = 'translateX(-100%)';
+                    setTimeout(() => item.parentElement.remove(), 300);
+                } else {
+                    item.style.transform = 'translateX(0px)';
+                }
+            });
+        });
+    </script>
+</body></html>

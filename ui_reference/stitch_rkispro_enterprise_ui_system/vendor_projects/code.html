@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RKISPro - Vendor Projects</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(10, 24, 37, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(30, 52, 68, 0.5);
+        }
+        .mesh-gradient-bg {
+            background: radial-gradient(at 0% 0%, rgba(69, 224, 232, 0.15) 0px, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(238, 152, 0, 0.1) 0px, transparent 50%);
+        }
+        .bottom-sheet-transition {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        body {
+            background-color: #001620;
+            color: #cce6f7;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#00696e",
+                    "on-primary": "#003739",
+                    "tertiary-container": "#00c4cc",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed": "#2a1700",
+                    "secondary": "#ffb95f",
+                    "primary-fixed": "#63f7ff",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#00c4cc",
+                    "tertiary": "#00e2eb",
+                    "on-tertiary": "#003739",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "surface-tint": "#3cdae2",
+                    "on-primary-container": "#004c4f",
+                    "secondary-container": "#ee9800",
+                    "error-container": "#93000a",
+                    "inverse-surface": "#cce6f7",
+                    "surface-container-highest": "#1e3844",
+                    "tertiary-fixed-dim": "#00dce4",
+                    "on-tertiary-container": "#004c4f",
+                    "on-surface": "#cce6f7",
+                    "surface-container-low": "#021e2a",
+                    "on-tertiary-fixed": "#002021",
+                    "on-secondary-container": "#5b3800",
+                    "primary": "#45e0e8",
+                    "outline": "#859394",
+                    "surface-container": "#06222e",
+                    "secondary-fixed": "#ffddb8",
+                    "inverse-on-surface": "#1a3340",
+                    "secondary-fixed-dim": "#ffb95f",
+                    "surface-dim": "#001620",
+                    "surface-bright": "#233c49",
+                    "on-secondary": "#472a00",
+                    "surface": "#001620",
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#3cdae2",
+                    "background": "#001620",
+                    "on-background": "#cce6f7",
+                    "surface-container-high": "#132d39",
+                    "on-tertiary-fixed-variant": "#004f53",
+                    "surface-variant": "#1e3844",
+                    "on-primary-fixed": "#002021",
+                    "surface-container-lowest": "#001019",
+                    "on-primary-fixed-variant": "#004f53",
+                    "outline-variant": "#3c494a",
+                    "on-surface-variant": "#bbc9ca",
+                    "tertiary-fixed": "#61f7ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "base": "4px",
+                    "margin-mobile": "16px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "display-md": ["Plus Jakarta Sans"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Inter"],
+                    "caption": ["Inter"],
+                    "display-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                    "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                    "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                    "display-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                    "caption": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                    "display-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                    "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background mesh-gradient-bg min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm flex items-center justify-between px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-md">
+<span class="font-display-md text-display-md font-bold text-primary">RKISPro</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95 transition-transform" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/30">
+<img class="w-full h-full object-cover" data-alt="A professional close-up portrait of a construction project manager in high-visibility gear, set against a blurred background of a modern architectural site. The lighting is crisp and natural, with a focus on trustworthy and expert facial expressions. The overall color palette matches the RKISPro brand with subtle teal and navy undertones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9Zki1QkSqThPImpBZx4kxBjev1sZUZRUIo_R2mzk7gKNOClMqlMIzfYbpJdUPmBIFloI4CaPXeqMMNlUdfeHmVhc-LF_E6aZ7sdXNbaavhETpQLVXjgZ6MInd45zi8XGFxCRprB-Paqyo6R3pdnI-_57kO_D7cbAwI7oGdT3ikf3uFsl6Rxe7brDffvY6CXFdVK2kiVNXjsdyiZiJBrQxg5dYWH2h2IDGaJSLkyxW17xIR8a9gkSUf-JXSbqry_SHG2rYa1WbrHkt"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-background mb-base">Active Projects</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your current site operations and financial updates.</p>
+</div>
+<div class="flex items-center gap-sm">
+<div class="glass-card px-md py-sm rounded-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="filter_list">filter_list</span>
+<span class="font-label-md text-label-md text-on-surface">All Phases</span>
+</div>
+<div class="glass-card px-md py-sm rounded-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="sort">sort</span>
+<span class="font-label-md text-label-md text-on-surface">Recent</span>
+</div>
+</div>
+</div>
+<!-- Projects Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-lg">
+<!-- Project Card 1 -->
+<div class="glass-card rounded-xl p-lg flex flex-col gap-lg group hover:shadow-[0_0_20px_rgba(69,224,232,0.15)] transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md px-md py-base bg-primary-container/20 text-primary rounded-full w-fit">In Progress</span>
+<h3 class="font-display-sm text-display-sm text-on-surface mt-sm">Starlight Corporate Plaza</h3>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</button>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+<span class="font-body-md text-body-md">Austin, TX • Phase 3</span>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span class="font-body-md text-body-md">Due: Oct 24, 2023</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between font-label-md text-label-md text-on-surface-variant">
+<span>Foundation &amp; Framing</span>
+<span>72%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[72%] shadow-[0_0_8px_rgba(69,224,232,0.5)]"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm mt-auto">
+<button class="py-sm px-md rounded-full border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-variant/30 transition-all active:scale-95" onclick="toggleBottomSheet('update-status')">Update Status</button>
+<button class="py-sm px-md rounded-full bg-primary text-on-primary font-label-md text-label-md hover:shadow-[0_0_12px_rgba(69,224,232,0.4)] transition-all active:scale-95">Invoice</button>
+</div>
+</div>
+<!-- Project Card 2 -->
+<div class="glass-card rounded-xl p-lg flex flex-col gap-lg group hover:shadow-[0_0_20px_rgba(69,224,232,0.15)] transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md px-md py-base bg-secondary-container/20 text-secondary rounded-full w-fit">Pending Approval</span>
+<h3 class="font-display-sm text-display-sm text-on-surface mt-sm">Harbor Bridge Renovation</h3>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</button>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+<span class="font-body-md text-body-md">Seattle, WA • Phase 1</span>
+</div>
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span class="font-body-md text-body-md">Due: Nov 12, 2023</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between font-label-md text-label-md text-on-surface-variant">
+<span>Materials Procurement</span>
+<span>15%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[15%]"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm mt-auto">
+<button class="py-sm px-md rounded-full border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-variant/30 transition-all active:scale-95" onclick="toggleBottomSheet('update-status')">Update Status</button>
+<button class="py-sm px-md rounded-full bg-primary text-on-primary font-label-md text-label-md hover:shadow-[0_0_12px_rgba(69,224,232,0.4)] transition-all active:scale-95">Invoice</button>
+</div>
+</div>
+<!-- Project Card 3 (Bento-style tall) -->
+<div class="glass-card rounded-xl overflow-hidden flex flex-col group hover:shadow-[0_0_20px_rgba(69,224,232,0.15)] transition-all duration-300 row-span-1 xl:row-span-2">
+<div class="h-48 relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A wide-angle, cinematic architectural shot of a massive modern construction project at dusk. Glowing lights from machinery and cranes create a high-tech atmosphere. The sky is a deep navy blue, contrasting with vibrant teal structural highlights. The image captures the industrial scale and precision engineering of the RKISPro marketplace ecosystem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeIb4tQxk-e1iAHRku5exTKFdla0Og6T47PLYYzo6kagcm7WdnlOkCAuvk-Tu-a1E-fQjIl3yzt2a9-9BcH7PRZfon_HmLdPfRuxEvY92qiuHpzLYN666NKH7isu3uJQcsy5HOlQixz35tw_sHTjkWqvY6PF3_j7Pc9rfwIvawuQ0L5hTlJj6SGJRDesHrgAJT8X7Rxj3l7-UarE_9alDzyqWZwX5cv9LU_Dpem0O6p8pl7wSgcEyjCJjJRVQGNOFV23s2_rx5KwjA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="font-label-md text-label-md px-md py-base bg-primary text-on-primary rounded-full">New Tender</span>
+</div>
+</div>
+<div class="p-lg flex flex-col gap-md flex-grow">
+<h3 class="font-display-sm text-display-sm text-on-surface">Neo-Industrial Hub A2</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Open request for specialized concrete pouring and steel reinforcement for a 12-story commercial structure.</p>
+<div class="flex flex-col gap-sm border-t border-outline-variant/30 pt-md mt-auto">
+<div class="flex justify-between items-center text-on-surface-variant">
+<span class="font-label-md text-label-md">Contract Value</span>
+<span class="font-body-lg text-body-lg text-primary">$420,000</span>
+</div>
+<button class="w-full py-md px-md rounded-xl bg-surface-container-highest border border-primary/20 text-on-surface font-label-md text-label-md hover:bg-primary/10 transition-all mt-sm">View RFQ Details</button>
+</div>
+</div>
+</div>
+<!-- Project Card 4 -->
+<div class="glass-card rounded-xl p-lg flex flex-col gap-lg group hover:shadow-[0_0_20px_rgba(69,224,232,0.15)] transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md px-md py-base bg-error-container/20 text-error rounded-full w-fit">Action Required</span>
+<h3 class="font-display-sm text-display-sm text-on-surface mt-sm">Zenith Residential Towers</h3>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</button>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+<span class="font-body-md text-body-md">Missing safety certification docs</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm mt-auto">
+<button class="py-sm px-md rounded-full border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-variant/30 transition-all active:scale-95" onclick="toggleBottomSheet('update-status')">Update Status</button>
+<button class="py-sm px-md rounded-full bg-primary text-on-primary font-label-md text-label-md hover:shadow-[0_0_12px_rgba(69,224,232,0.4)] transition-all active:scale-95">Invoice</button>
+</div>
+</div>
+<!-- Project Card 5 -->
+<div class="glass-card rounded-xl p-lg flex flex-col gap-lg group hover:shadow-[0_0_20px_rgba(69,224,232,0.15)] transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-xs">
+<span class="font-label-md text-label-md px-md py-base bg-primary-container/20 text-primary rounded-full w-fit">In Progress</span>
+<h3 class="font-display-sm text-display-sm text-on-surface mt-sm">Summit Logistics Center</h3>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="more_vert">more_vert</button>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex items-center gap-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+<span class="font-body-md text-body-md">Denver, CO • Phase 5</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between font-label-md text-label-md text-on-surface-variant">
+<span>HVAC &amp; Electrical</span>
+<span>94%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[94%]"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-sm mt-auto">
+<button class="py-sm px-md rounded-full border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-variant/30 transition-all active:scale-95" onclick="toggleBottomSheet('update-status')">Update Status</button>
+<button class="py-sm px-md rounded-full bg-primary text-on-primary font-label-md text-label-md hover:shadow-[0_0_12px_rgba(69,224,232,0.4)] transition-all active:scale-95">Invoice</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl rounded-t-xl border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] flex justify-around items-center h-20 px-2 pb-safe w-full">
+<a class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-xs bg-primary-container/20 text-primary rounded-xl px-4 py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="construction">construction</span>
+<span class="font-label-md text-label-md">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="request_quote">request_quote</span>
+<span class="font-label-md text-label-md">Requests</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Finance</span>
+</a>
+</nav>
+<!-- Status Update Bottom Sheet Overlay -->
+<div class="fixed inset-0 bg-background/60 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300 pointer-events-none" id="bottom-sheet-overlay"></div>
+<!-- Status Update Bottom Sheet Content -->
+<div class="fixed bottom-0 left-0 right-0 z-[70] translate-y-full bottom-sheet-transition glass-card rounded-t-3xl max-h-[795px] overflow-y-auto px-margin-mobile pt-lg pb-xl flex flex-col gap-lg" id="update-status-sheet">
+<div class="w-12 h-1.5 bg-outline-variant/50 rounded-full mx-auto mb-md"></div>
+<div class="flex justify-between items-center">
+<h2 class="font-display-md text-display-md text-on-surface">Update Project Status</h2>
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="close" onclick="toggleBottomSheet('update-status')">close</button>
+</div>
+<div class="flex flex-col gap-md">
+<label class="font-label-md text-label-md text-on-surface-variant px-base">Current Phase Completion (%)</label>
+<div class="flex items-center gap-md">
+<input class="flex-grow accent-primary" max="100" min="0" type="range" value="72"/>
+<span class="font-display-sm text-display-sm text-primary w-12 text-right">72%</span>
+</div>
+</div>
+<div class="flex flex-col gap-md">
+<label class="font-label-md text-label-md text-on-surface-variant px-base">Status Label</label>
+<div class="grid grid-cols-2 gap-sm">
+<button class="flex items-center justify-center gap-sm p-md rounded-xl border border-primary bg-primary-container/10 text-primary transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+<span class="font-label-md text-label-md">In Progress</span>
+</button>
+<button class="flex items-center justify-center gap-sm p-md rounded-xl border border-outline-variant hover:border-secondary/50 text-on-surface-variant transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="pause">pause</span>
+<span class="font-label-md text-label-md">On Hold</span>
+</button>
+<button class="flex items-center justify-center gap-sm p-md rounded-xl border border-outline-variant hover:border-error/50 text-on-surface-variant transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+<span class="font-label-md text-label-md">Delayed</span>
+</button>
+<button class="flex items-center justify-center gap-sm p-md rounded-xl border border-outline-variant hover:border-primary/50 text-on-surface-variant transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle">check_circle</span>
+<span class="font-label-md text-label-md">Phase Done</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-md">
+<label class="font-label-md text-label-md text-on-surface-variant px-base">Update Notes</label>
+<textarea class="bg-surface-container-lowest border border-outline-variant/30 rounded-xl p-md font-body-md text-body-md text-on-surface focus:border-primary focus:ring-1 focus:ring-primary outline-none min-h-[100px]" placeholder="Add a quick note about today's progress..."></textarea>
+</div>
+<div class="flex flex-col gap-sm pt-md">
+<button class="w-full py-lg rounded-xl bg-primary text-on-primary font-display-sm text-display-sm shadow-[0_0_20px_rgba(69,224,232,0.3)] active:scale-95 transition-transform">Save Updates</button>
+<p class="text-center font-caption text-caption text-on-surface-variant">Update will be sent to the prime contractor for review.</p>
+</div>
+</div>
+<script>
+        function toggleBottomSheet(id) {
+            const sheet = document.getElementById(id + '-sheet');
+            const overlay = document.getElementById('bottom-sheet-overlay');
+            
+            if (sheet.classList.contains('translate-y-full')) {
+                sheet.classList.remove('translate-y-full');
+                overlay.classList.remove('hidden');
+                setTimeout(() => overlay.classList.add('opacity-100'), 10);
+                overlay.classList.add('pointer-events-auto');
+                document.body.style.overflow = 'hidden';
+            } else {
+                sheet.classList.add('translate-y-full');
+                overlay.classList.remove('opacity-100');
+                overlay.classList.remove('pointer-events-auto');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                    document.body.style.overflow = '';
+                }, 300);
+            }
+        }
+
+        // Close on overlay click
+        document.getElementById('bottom-sheet-overlay').addEventListener('click', () => {
+            toggleBottomSheet('update-status');
+        });
+
+        // Add some basic hover interactions for cards
+        const cards = document.querySelectorAll('.glass-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential for JS based micro-animations here
+            });
+        });
+    </script>
+</body></html>

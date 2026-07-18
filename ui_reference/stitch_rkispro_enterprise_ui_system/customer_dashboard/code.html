@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #001620;
+            color: #cce6f7;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            background: rgba(10, 24, 37, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(30, 52, 68, 0.5);
+        }
+        .teal-glow {
+            box-shadow: 0 0 20px rgba(69, 224, 232, 0.15);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #45e0e8 0%, #00c4cc 100%);
+        }
+        .mesh-gradient-bg {
+            background: radial-gradient(at 0% 0%, rgba(61, 218, 226, 0.15) 0px, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(238, 152, 0, 0.05) 0px, transparent 50%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#00696e",
+                      "on-primary": "#003739",
+                      "tertiary-container": "#00c4cc",
+                      "error": "#ffb4ab",
+                      "on-secondary-fixed": "#2a1700",
+                      "secondary": "#ffb95f",
+                      "primary-fixed": "#63f7ff",
+                      "on-error-container": "#ffdad6",
+                      "primary-container": "#00c4cc",
+                      "tertiary": "#00e2eb",
+                      "on-tertiary": "#003739",
+                      "on-secondary-fixed-variant": "#653e00",
+                      "surface-tint": "#3cdae2",
+                      "on-primary-container": "#004c4f",
+                      "secondary-container": "#ee9800",
+                      "error-container": "#93000a",
+                      "inverse-surface": "#cce6f7",
+                      "surface-container-highest": "#1e3844",
+                      "tertiary-fixed-dim": "#00dce4",
+                      "on-tertiary-container": "#004c4f",
+                      "on-surface": "#cce6f7",
+                      "surface-container-low": "#021e2a",
+                      "on-tertiary-fixed": "#002021",
+                      "on-secondary-container": "#5b3800",
+                      "primary": "#45e0e8",
+                      "outline": "#859394",
+                      "surface-container": "#06222e",
+                      "secondary-fixed": "#ffddb8",
+                      "inverse-on-surface": "#1a3340",
+                      "secondary-fixed-dim": "#ffb95f",
+                      "surface-dim": "#001620",
+                      "surface-bright": "#233c49",
+                      "on-secondary": "#472a00",
+                      "surface": "#001620",
+                      "on-error": "#690005",
+                      "primary-fixed-dim": "#3cdae2",
+                      "background": "#001620",
+                      "on-background": "#cce6f7",
+                      "surface-container-high": "#132d39",
+                      "on-tertiary-fixed-variant": "#004f53",
+                      "surface-variant": "#1e3844",
+                      "on-primary-fixed": "#002021",
+                      "surface-container-lowest": "#001019",
+                      "on-primary-fixed-variant": "#004f53",
+                      "outline-variant": "#3c494a",
+                      "on-surface-variant": "#bbc9ca",
+                      "tertiary-fixed": "#61f7ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-desktop": "40px",
+                      "base": "4px",
+                      "margin-mobile": "16px",
+                      "xl": "32px",
+                      "md": "16px",
+                      "sm": "8px",
+                      "lg": "24px",
+                      "gutter": "16px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "display-md": ["Plus Jakarta Sans"],
+                      "body-sm": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "label-md": ["Inter"],
+                      "caption": ["Inter"],
+                      "display-sm": ["Plus Jakarta Sans"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "display-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                      "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "display-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="mesh-gradient-bg min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm flex items-center justify-between px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary/30">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a middle-aged construction executive in a high-tech office. The lighting is dramatic and moody, using cool blue and teal tones to reflect a sophisticated B2B dashboard environment. The background is softly blurred, showcasing a modern, glass-filled workspace with a digital interface visible. The executive looks confident and trustworthy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoxR7zgvL2hZ24qohhzbyMNeD8TEgGQDrVtXLZAxvZvgXnwpZewDlSgp7S3Cv_dGEVsVJzr2joXVTWfxm6EuZV2KtwiSXkiLK91pvVMCr2idjXSrbMR0g7JlfiMXD6cw555cqP0qP-xzDhdr9H3xBTrMex0gUjGjenk7QlVRx3VM3tlWTZwcvJ1JWu8nmLaBa1Nd-hwkgKTHPiVzyEaz9sdN6_I-8XHWpt4OuMmMp3EI-5nYMv2olBuVW57epEfxtm4TCqwQuDpnMs"/>
+</div>
+<div class="flex flex-col">
+<span class="font-display-md text-display-md font-bold text-primary">RKISPro</span>
+</div>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">notifications</button>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile max-w-7xl mx-auto space-y-xl">
+<!-- Greeting Section -->
+<section class="space-y-xs">
+<h1 class="font-display-lg text-display-lg text-on-surface">Good Morning, Alex</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Here is your project overview for today.</p>
+</section>
+<!-- Summary Stats Bento Grid -->
+<section class="grid grid-cols-2 md:grid-cols-3 gap-md">
+<div class="glass-card p-md rounded-xl space-y-sm">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-primary" data-icon="construction">construction</span>
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded-lg font-caption text-caption">Active</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant">Active Projects</h3>
+<p class="font-display-md text-display-md text-on-surface">12</p>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl space-y-sm">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-secondary" data-icon="request_quote">request_quote</span>
+<span class="bg-secondary/10 text-secondary px-2 py-0.5 rounded-lg font-caption text-caption">New</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant">Open Requests</h3>
+<p class="font-display-md text-display-md text-on-surface">04</p>
+</div>
+</div>
+<div class="glass-card p-md rounded-xl space-y-sm col-span-2 md:col-span-1">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="bg-tertiary/10 text-tertiary px-2 py-0.5 rounded-lg font-caption text-caption">Pending</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface-variant">Pending Quotes</h3>
+<p class="font-display-md text-display-md text-on-surface">07</p>
+</div>
+</div>
+</section>
+<!-- Quick Book CTA -->
+<section>
+<div class="relative overflow-hidden primary-gradient p-lg rounded-2xl teal-glow group cursor-pointer transition-all hover:scale-[1.01] active:scale-[0.99]">
+<div class="absolute right-0 top-0 opacity-20 transform translate-x-1/4 -translate-y-1/4">
+<span class="material-symbols-outlined text-[120px]" data-icon="add_circle">add_circle</span>
+</div>
+<div class="relative z-10 space-y-md">
+<div class="space-y-xs">
+<h2 class="font-display-md text-display-md text-on-primary">Quick Book New Service</h2>
+<p class="font-body-md text-body-md text-on-primary/80 max-w-xs">Start a new project request or schedule a site inspection instantly.</p>
+</div>
+<button class="bg-on-primary text-primary px-lg py-sm rounded-full font-label-md text-label-md font-bold uppercase tracking-wider shadow-lg">
+                        Get Started
+                    </button>
+</div>
+</div>
+</section>
+<!-- Recent Projects -->
+<section class="space-y-md">
+<div class="flex items-center justify-between">
+<h2 class="font-display-sm text-display-sm text-on-surface">Recent Projects</h2>
+<button class="text-primary font-label-md text-label-md hover:underline transition-all">View All</button>
+</div>
+<div class="glass-card rounded-xl overflow-hidden divide-y divide-outline-variant/20">
+<!-- Project Item 1 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-variant/50 transition-colors cursor-pointer group">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="A wide aerial cinematic shot of a high-rise construction site in a coastal city. The building structure is partially completed, with cranes silhouetted against a brilliant teal and orange sunset. The lighting is cinematic, highlighting the steel and glass with sharp reflections. The overall aesthetic is industrial, precise, and high-value, perfectly fitting a construction management platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB-TJviRlgVH0JtLQmzcfxWWNsVHSsTEmo_kd3NZwYbXjAIpKX1MyknQfla4s16uqlQxCRytvX23L8m3XIZq8OgnUvBjv0IyRI7kLelBBgFC8uoRx9oyFTs4h14UhIGPt4CfBaQitGKFwn_FbU-14gqNtGjYaMynpnAhfltqJpRBIpEzozxUMyVSUbiU-oavt-bxfxAEkIYuTMytz3yWD1kj8p6jvKtzN7Lid8aSIUL2Rk-itzDHYlxfwu-i5DjaLb7TlgcCnHfuc7"/>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold">Skyline Residential Tower</h4>
+<p class="font-caption text-caption text-on-surface-variant">L7 Foundation Phase • Est. Completion Aug 2024</p>
+</div>
+</div>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full font-label-md text-label-md border border-primary/20">On Track</span>
+</div>
+<!-- Project Item 2 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-variant/50 transition-colors cursor-pointer group">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="A detailed macro view of high-quality industrial building materials, featuring brushed steel beams and glass panels arranged in a geometric pattern. The lighting is cool, with a focus on teal highlights and deep navy shadows. The composition is clean and minimalist, conveying a sense of engineering precision and high-end construction quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-OTvDC2GJPFk-lK-eYyKoda8jz4vCq11IL-OSAuIjDUL7jDCzPgFKUNsLhtUd1Qe2CyMEPEltsIaHZFsc-Jp7rRcaXzzPVLMDY-gDcKM9YxJoTQxAk9gQkCvL264j_ehcRVYLgsAbAcKt4Z7FSvdpFhKr5aUboW1fmMoUDv88ktAy95mChL69sgwjlMEOzirxnYlz8kxELvCiYKw-B2uWP4rCiyGRm1w2UMqzYe6owbptmkiUelXx8hD2zNNpBQajahAtCazoF1YS"/>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold">Harbor Logistics Hub</h4>
+<p class="font-caption text-caption text-on-surface-variant">Site Preparation • Est. Completion Dec 2024</p>
+</div>
+</div>
+<span class="bg-secondary/10 text-secondary px-3 py-1 rounded-full font-label-md text-label-md border border-secondary/20">Delayed</span>
+</div>
+<!-- Project Item 3 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-variant/50 transition-colors cursor-pointer group">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all" data-alt="An interior view of a modern commercial office building under renovation. Exposed concrete walls are complemented by large floor-to-ceiling windows looking out onto a city skyline. The lighting is bright and airy, using soft teal and white tones to emphasize a premium, high-tech renovation project. The mood is efficient and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkbymgS3nqWxeWo9aJ-4zL9IEUOseMq1XUN-Cxc6V0NpCqKKl2o4B2Smuc4QrGjOI31T-22F_hU-fAeciFo5A9m_QMGDLCOpqHpcUkodIIAQgFa1ZZ75d7QKhNvhncoi27s7eO_nT6oKvifGb_E3Kwkt8-sz0pgWAzftisYU12M2Lx35Kg4WM2LlObMc-Zj5GeOFjgYIH8SAOBDF4KdT8-RYi-UISwMUMLGpJMCap--jBs4nfl4jQBiEmmnZKjVK6yC8x-kXzJLlu3"/>
+</div>
+<div>
+<h4 class="font-body-lg text-body-lg text-on-surface font-semibold">Corporate HQ Renovation</h4>
+<p class="font-caption text-caption text-on-surface-variant">Interior Finishing • Est. Completion May 2024</p>
+</div>
+</div>
+<span class="bg-tertiary/10 text-tertiary px-3 py-1 rounded-full font-label-md text-label-md border border-tertiary/20">Completing</span>
+</div>
+</div>
+</section>
+<!-- Secondary Info Cards -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-md pb-8">
+<div class="glass-card p-lg rounded-2xl flex flex-col justify-between min-h-[160px]">
+<h3 class="font-display-sm text-display-sm text-on-surface">Recent Activity</h3>
+<div class="mt-md space-y-sm">
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">New quote uploaded for <span class="text-on-surface">Harbor Hub</span></p>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Site inspection scheduled for <span class="text-on-surface">Tower 2</span></p>
+</div>
+</div>
+</div>
+<div class="glass-card p-lg rounded-2xl flex flex-col justify-between min-h-[160px]">
+<h3 class="font-display-sm text-display-sm text-on-surface">Compliance Status</h3>
+<div class="mt-md flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="relative w-12 h-12">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<circle class="stroke-outline-variant" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="stroke-primary" cx="18" cy="18" fill="none" r="16" stroke-dasharray="85, 100" stroke-linecap="round" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center font-caption text-caption font-bold">85%</div>
+</div>
+<div>
+<p class="font-body-sm text-body-sm text-on-surface">Safety Standards Met</p>
+<p class="font-caption text-caption text-on-surface-variant">3 Actions Required</p>
+</div>
+</div>
+<button class="bg-surface-container-highest px-md py-1.5 rounded-lg font-label-md text-label-md text-primary">Resolve</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] flex justify-around items-center h-20 px-2 pb-safe w-full">
+<a class="flex flex-col items-center justify-center gap-xs bg-primary-container/20 text-primary rounded-xl px-4 py-1 transition-transform active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 transition-transform active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="construction">construction</span>
+<span class="font-label-md text-label-md">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 transition-transform active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="request_quote">request_quote</span>
+<span class="font-label-md text-label-md">Requests</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 transition-transform active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Finance</span>
+</a>
+</nav>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

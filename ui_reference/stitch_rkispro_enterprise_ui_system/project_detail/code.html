@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RKISPro | Project Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(10, 24, 37, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(30, 52, 68, 0.5);
+        }
+        .mesh-gradient-bg {
+            background: radial-gradient(at 0% 0%, rgba(69, 224, 232, 0.15) 0px, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(238, 152, 0, 0.1) 0px, transparent 50%);
+        }
+        .stepper-line {
+            width: 2px;
+            background: linear-gradient(to bottom, #45e0e8 0%, #1e3844 100%);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #001620; }
+        ::-webkit-scrollbar-thumb { background: #1e3844; border-radius: 10px; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#00696e",
+                        "on-primary": "#003739",
+                        "tertiary-container": "#00c4cc",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#2a1700",
+                        "secondary": "#ffb95f",
+                        "primary-fixed": "#63f7ff",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#00c4cc",
+                        "tertiary": "#00e2eb",
+                        "on-tertiary": "#003739",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "surface-tint": "#3cdae2",
+                        "on-primary-container": "#004c4f",
+                        "secondary-container": "#ee9800",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#cce6f7",
+                        "surface-container-highest": "#1e3844",
+                        "tertiary-fixed-dim": "#00dce4",
+                        "on-tertiary-container": "#004c4f",
+                        "on-surface": "#cce6f7",
+                        "surface-container-low": "#021e2a",
+                        "on-tertiary-fixed": "#002021",
+                        "on-secondary-container": "#5b3800",
+                        "primary": "#45e0e8",
+                        "outline": "#859394",
+                        "surface-container": "#06222e",
+                        "secondary-fixed": "#ffddb8",
+                        "inverse-on-surface": "#1a3340",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "surface-dim": "#001620",
+                        "surface-bright": "#233c49",
+                        "on-secondary": "#472a00",
+                        "surface": "#001620",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#3cdae2",
+                        "background": "#001620",
+                        "on-background": "#cce6f7",
+                        "surface-container-high": "#132d39",
+                        "on-tertiary-fixed-variant": "#004f53",
+                        "surface-variant": "#1e3844",
+                        "on-primary-fixed": "#002021",
+                        "surface-container-lowest": "#001019",
+                        "on-primary-fixed-variant": "#004f53",
+                        "outline-variant": "#3c494a",
+                        "on-surface-variant": "#bbc9ca",
+                        "tertiary-fixed": "#61f7ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "display-md": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "display-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "display-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md mesh-gradient-bg min-h-screen pb-24 md:pb-0">
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm flex items-center justify-between px-4 md:px-10 h-16">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-2xl">arrow_back</span>
+<h1 class="font-display-md text-display-md font-bold text-primary">RKISPro</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 mr-6">
+<span class="text-primary font-label-md cursor-pointer hover:opacity-80">Home</span>
+<span class="text-on-surface-variant font-label-md cursor-pointer hover:opacity-80">Projects</span>
+<span class="text-on-surface-variant font-label-md cursor-pointer hover:opacity-80">Requests</span>
+<span class="text-on-surface-variant font-label-md cursor-pointer hover:opacity-80">Finance</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant hover:opacity-80 cursor-pointer">notifications</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-primary/30">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a construction project manager wearing a sleek modern headset, against a blurred high-tech architectural office background with teal and amber lighting accents. The style is sharp, clean, and corporate, emphasizing reliability and digital expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgi9OtQRrpBtmpbnehJSEFGtMutaaJ4WndgOHc2dPh8J542zZLB2SfIHWMLjUi4y3bOuQLrVcmPbMebboqq-kEoVFO-fUsVVVGo72bAfiL5q0szxVrcgzDcEdphfm2-_JToyJslJrBtxML9uPa8w0veci2cDKKw9Z5CBmRUHSvTBY6Mu00Dt42jy2tTBTZj6LGRM6YPojTDiwjnZNvS6bvL5yBqAGZhxky7-TI90IDk57ZaPGdoUtwVo3wWBO7OeGKHVhGBzByBS7e"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-4 md:px-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Project Header / Identity -->
+<div class="md:col-span-12 glass-card rounded-xl p-6 mb-2 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] uppercase tracking-wider font-bold rounded border border-primary/20">Phase 3: Execution</span>
+<span class="text-on-surface-variant font-caption">ID: #RK-29402</span>
+</div>
+<h2 class="font-display-lg text-display-lg">Steel Frame Logistics Center</h2>
+<p class="text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">location_on</span> North Industrial Zone, Sector 4
+                </p>
+</div>
+<div class="flex gap-3">
+<button class="bg-primary hover:shadow-[0_0_15px_rgba(69,224,232,0.4)] transition-all px-6 py-2 rounded-full text-on-primary font-label-md font-bold flex items-center gap-2 active:scale-95">
+<span class="material-symbols-outlined text-sm">edit</span>
+                    Manage Project
+                </button>
+</div>
+</div>
+<!-- Left Column: Stepper & Details -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<!-- Vertical Stepper Progress -->
+<section class="glass-card rounded-xl p-6">
+<h3 class="font-display-sm text-display-sm mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span> Project Timeline
+                </h3>
+<div class="relative space-y-8 ml-2">
+<div class="absolute left-[11px] top-2 bottom-2 w-0.5 bg-outline-variant/30"></div>
+<!-- Step 1: Completed -->
+<div class="relative flex gap-4">
+<div class="z-10 w-6 h-6 rounded-full bg-primary flex items-center justify-center border-4 border-background">
+<span class="material-symbols-outlined text-on-primary text-xs font-bold">check</span>
+</div>
+<div>
+<p class="font-label-md text-primary">Initial Survey &amp; Planning</p>
+<p class="text-caption text-on-surface-variant">Completed on Oct 12</p>
+</div>
+</div>
+<!-- Step 2: Completed -->
+<div class="relative flex gap-4">
+<div class="z-10 w-6 h-6 rounded-full bg-primary flex items-center justify-center border-4 border-background">
+<span class="material-symbols-outlined text-on-primary text-xs font-bold">check</span>
+</div>
+<div>
+<p class="font-label-md text-primary">Permit Acquisition</p>
+<p class="text-caption text-on-surface-variant">Completed on Nov 05</p>
+</div>
+</div>
+<!-- Step 3: Active -->
+<div class="relative flex gap-4">
+<div class="z-10 w-6 h-6 rounded-full bg-background flex items-center justify-center border-2 border-primary shadow-[0_0_10px_rgba(69,224,232,0.5)]">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+</div>
+<div>
+<p class="font-label-md text-on-surface">Structural Steel Installation</p>
+<p class="text-caption text-secondary">In Progress (64%)</p>
+<div class="w-32 h-1 bg-surface-container-highest rounded-full mt-2 overflow-hidden">
+<div class="bg-primary h-full w-[64%]"></div>
+</div>
+</div>
+</div>
+<!-- Step 4: Pending -->
+<div class="relative flex gap-4">
+<div class="z-10 w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center border-2 border-outline-variant"></div>
+<div>
+<p class="font-label-md text-on-surface-variant">HVAC &amp; Electrical Rough-in</p>
+<p class="text-caption text-on-surface-variant">Scheduled for Dec 20</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Finance Mini Section -->
+<section class="glass-card rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-display-sm text-display-sm">Finance</h3>
+<span class="text-primary font-label-md cursor-pointer">View Ledger</span>
+</div>
+<div class="mb-4">
+<p class="text-caption text-on-surface-variant uppercase tracking-wider">Total Budget Used</p>
+<p class="text-display-md font-bold text-on-surface">$1,420,000 <span class="text-sm font-normal text-on-surface-variant">/ $2.1M</span></p>
+</div>
+<!-- Mini Bar Chart -->
+<div class="flex items-end justify-between h-20 gap-2 px-2 mt-6">
+<div class="w-full bg-primary-container/20 rounded-t-sm h-[40%] hover:bg-primary/40 transition-colors cursor-pointer" title="Aug"></div>
+<div class="w-full bg-primary-container/20 rounded-t-sm h-[65%] hover:bg-primary/40 transition-colors cursor-pointer" title="Sep"></div>
+<div class="w-full bg-primary-container/20 rounded-t-sm h-[50%] hover:bg-primary/40 transition-colors cursor-pointer" title="Oct"></div>
+<div class="w-full bg-primary-container/20 rounded-t-sm h-[85%] hover:bg-primary/40 transition-colors cursor-pointer" title="Nov"></div>
+<div class="w-full bg-primary h-[95%] rounded-t-sm shadow-[0_0_10px_rgba(69,224,232,0.3)]" title="Dec (Current)"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant mt-2 px-1">
+<span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+</div>
+</section>
+</div>
+<!-- Center/Right Column: Content & Assets -->
+<div class="md:col-span-8 flex flex-col gap-6">
+<!-- Project Visual & Info Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="glass-card rounded-xl overflow-hidden relative group">
+<img class="w-full h-full object-cover min-h-[240px] group-hover:scale-105 transition-transform duration-700" data-alt="A highly detailed architectural visualization of a massive industrial logistics center under construction. Glowing teal construction cranes are visible against a twilight sky with amber sunset highlights. The scene features exposed steel framework and professional lighting that emphasizes the engineering precision and modern B2B aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhXDFIJLBEuDpkdshGc2F_9YHE9Kt-RUa3__033OW_tGiHQlQmpPgi3edZhhiEl2bwpKULB8_aJT5G7rLtMJVC6s1RO9cezh4EUQscEF9hlRJOtxJwaSbcehY3hwupw7ewvtW7hrOM_rjYG-hiwMF59Q1zUi91daMBJYWGUk0Ca9oNumLwn6paWIy799v0cLsjhN2XxDe8G57BTVc2u3kcxyHhSYp8LIvDl2ngg-8D43l37iJYA1oEsQACd5Q6FtbciSenTndSfti2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+<button class="absolute bottom-4 right-4 bg-surface/80 backdrop-blur-md p-2 rounded-full border border-outline-variant/30 text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">fullscreen</span>
+</button>
+</div>
+<div class="glass-card rounded-xl p-6">
+<h4 class="font-label-md text-on-surface-variant uppercase mb-4">Construction Specs</h4>
+<ul class="space-y-4">
+<li class="flex justify-between items-center border-b border-outline-variant/10 pb-2">
+<span class="text-on-surface-variant">Square Footage</span>
+<span class="font-bold">45,000 sq ft</span>
+</li>
+<li class="flex justify-between items-center border-b border-outline-variant/10 pb-2">
+<span class="text-on-surface-variant">Primary Material</span>
+<span class="font-bold">A572 Grade 50 Steel</span>
+</li>
+<li class="flex justify-between items-center border-b border-outline-variant/10 pb-2">
+<span class="text-on-surface-variant">Est. Completion</span>
+<span class="font-bold text-secondary">March 2024</span>
+</li>
+<li class="flex justify-between items-center">
+<span class="text-on-surface-variant">Team Lead</span>
+<div class="flex items-center gap-2">
+<span class="font-bold">Marcus Thorne</span>
+<div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center text-[10px]">MT</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<!-- Documents Section -->
+<section class="glass-card rounded-xl p-6">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-display-sm text-display-sm">Project Documents</h3>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant/30 rounded-lg hover:bg-surface-variant/30"><span class="material-symbols-outlined text-sm">search</span></button>
+<button class="p-2 border border-outline-variant/30 rounded-lg hover:bg-surface-variant/30"><span class="material-symbols-outlined text-sm">upload_file</span></button>
+</div>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+<!-- Doc Thumbnail -->
+<div class="bg-surface-container-low border border-outline-variant/20 rounded-xl p-4 group cursor-pointer hover:border-primary/50 transition-all">
+<div class="w-full aspect-[3/4] bg-surface-container-highest rounded-lg mb-3 flex items-center justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-primary text-4xl opacity-40">description</span>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<p class="text-label-md font-bold truncate">Structural_Blueprints_v4.pdf</p>
+<p class="text-caption text-on-surface-variant">2.4 MB • Updated Yesterday</p>
+</div>
+<!-- Doc Thumbnail -->
+<div class="bg-surface-container-low border border-outline-variant/20 rounded-xl p-4 group cursor-pointer hover:border-primary/50 transition-all">
+<div class="w-full aspect-[3/4] bg-surface-container-highest rounded-lg mb-3 flex items-center justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-primary text-4xl opacity-40">contract_edit</span>
+</div>
+<p class="text-label-md font-bold truncate">Vendor_Agreement_Final.pdf</p>
+<p class="text-caption text-on-surface-variant">1.1 MB • 3 days ago</p>
+</div>
+<!-- Doc Thumbnail -->
+<div class="bg-surface-container-low border border-outline-variant/20 rounded-xl p-4 group cursor-pointer hover:border-primary/50 transition-all">
+<div class="w-full aspect-[3/4] bg-surface-container-highest rounded-lg mb-3 flex items-center justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-primary text-4xl opacity-40">perm_media</span>
+</div>
+<p class="text-label-md font-bold truncate">Site_Inspection_Photos.zip</p>
+<p class="text-caption text-on-surface-variant">154 MB • Oct 28</p>
+</div>
+<!-- Doc Thumbnail -->
+<div class="bg-surface-container-low border border-outline-variant/20 rounded-xl p-4 group cursor-pointer hover:border-primary/50 transition-all">
+<div class="w-full aspect-[3/4] bg-surface-container-highest rounded-lg mb-3 flex items-center justify-center relative overflow-hidden">
+<span class="material-symbols-outlined text-primary text-4xl opacity-40">fact_check</span>
+</div>
+<p class="text-label-md font-bold truncate">Compliance_Report.pdf</p>
+<p class="text-caption text-on-surface-variant">800 KB • Oct 15</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Chat Floating Action -->
+<div class="fixed bottom-24 right-6 md:bottom-8 md:right-10 z-50">
+<button class="w-16 h-16 rounded-full bg-primary text-on-primary shadow-[0_8px_24px_rgba(69,224,232,0.4)] hover:shadow-[0_8px_32px_rgba(69,224,232,0.6)] hover:scale-110 transition-all flex items-center justify-center group">
+<span class="material-symbols-outlined text-3xl group-hover:rotate-12 transition-transform">forum</span>
+<div class="absolute -top-1 -right-1 w-5 h-5 bg-secondary text-on-secondary text-[10px] font-bold rounded-full flex items-center justify-center border-2 border-background">3</div>
+</button>
+</div>
+<!-- Mobile Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] rounded-t-xl flex justify-around items-center h-20 px-2 pb-safe">
+<div class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 px-4 py-1 rounded-xl">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-xs bg-primary-container/20 text-primary rounded-xl px-4 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">construction</span>
+<span class="font-label-md text-label-md">Projects</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 px-4 py-1 rounded-xl">
+<span class="material-symbols-outlined">request_quote</span>
+<span class="font-label-md text-label-md">Requests</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 px-4 py-1 rounded-xl">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Finance</span>
+</div>
+</nav>
+<script>
+        // Simple Micro-interactions
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = 'rgba(69, 224, 232, 0.3)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = 'rgba(30, 52, 68, 0.5)';
+            });
+        });
+
+        // Bar chart animation simulation
+        window.addEventListener('load', () => {
+            const bars = document.querySelectorAll('.bg-primary-container\\/20, .bg-primary');
+            bars.forEach((bar, index) => {
+                const finalHeight = bar.style.height || getComputedStyle(bar).height;
+                bar.style.height = '0';
+                setTimeout(() => {
+                    bar.style.transition = 'height 1s cubic-bezier(0.4, 0, 0.2, 1)';
+                    bar.style.height = finalHeight;
+                }, 100 * index);
+            });
+        });
+    </script>
+</body></html>

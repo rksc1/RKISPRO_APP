@@ -1,0 +1,57 @@
+import type { QuickBookingServiceType, QuickBookingStatus, QuickBookingUrgency } from "@/types/auth";
+
+export type QuickBookingRow = {
+  id: string;
+  customer_id: string;
+  service_type: QuickBookingServiceType;
+  title: string;
+  description: string | null;
+  location: string;
+  preferred_date: string | null;
+  preferred_time: string | null;
+  urgency: QuickBookingUrgency;
+  budget: number | null;
+  images: string[];
+  contact_name: string | null;
+  contact_phone: string | null;
+  site_access_notes: string | null;
+  machine_or_equipment: string | null;
+  issue_started_at: string | null;
+  safety_requirements: string | null;
+  status: QuickBookingStatus;
+  assigned_vendor_id: string | null;
+  assigned_worker_name: string | null;
+  assigned_worker_phone: string | null;
+  admin_notes: string | null;
+  vendor_notes: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type QuickBooking = {
+  id: string;
+  customerId: string;
+  serviceType: QuickBookingServiceType;
+  title: string;
+  description: string | null;
+  location: string;
+  preferredDate: string | null;
+  preferredTime: string | null;
+  urgency: QuickBookingUrgency;
+  budget: number | null;
+  images: string[];
+  contactName: string | null;
+  contactPhone: string | null;
+  siteAccessNotes: string | null;
+  machineOrEquipment: string | null;
+  issueStartedAt: string | null;
+  safetyRequirements: string | null;
+  status: QuickBookingStatus;
+  assignedVendorId: string | null;
+  assignedWorkerName: string | null;
+  assignedWorkerPhone: string | null;
+  adminNotes: string | null;
+  vendorNotes: string | null;
+  createdAt: string;
+  updatedAt: string;
+};

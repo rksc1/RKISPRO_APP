@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RKISPro Vendor Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(10, 24, 37, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(30, 52, 68, 0.5);
+        }
+        .mesh-gradient {
+            background: radial-gradient(at 0% 0%, rgba(69, 224, 232, 0.15) 0px, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(238, 152, 0, 0.1) 0px, transparent 50%);
+        }
+        .sparkline-container {
+            filter: drop-shadow(0 0 8px rgba(238, 152, 0, 0.4));
+        }
+        body {
+            background-color: #001620;
+            color: #cce6f7;
+            font-family: 'Inter', sans-serif;
+        }
+        .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#00696e",
+                        "on-primary": "#003739",
+                        "tertiary-container": "#00c4cc",
+                        "error": "#ffb4ab",
+                        "secondary": "#ffb95f",
+                        "primary-container": "#00c4cc",
+                        "tertiary": "#00e2eb",
+                        "surface-tint": "#3cdae2",
+                        "on-primary-container": "#004c4f",
+                        "secondary-container": "#ee9800",
+                        "error-container": "#93000a",
+                        "surface-container-highest": "#1e3844",
+                        "on-surface": "#cce6f7",
+                        "primary": "#45e0e8",
+                        "outline": "#859394",
+                        "surface-container": "#06222e",
+                        "inverse-on-surface": "#1a3340",
+                        "background": "#001620",
+                        "on-background": "#cce6f7",
+                        "outline-variant": "#3c494a",
+                        "on-surface-variant": "#bbc9ca"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "xs": "4px"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="min-h-screen pb-24 overflow-x-hidden mesh-gradient">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm flex items-center justify-between px-margin-mobile h-16">
+<div class="flex items-center gap-sm">
+<span class="font-display-md text-display-md font-bold text-primary">RKISPro</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full border border-primary/30 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a construction site manager wearing a white hard hat and safety vest. The background shows a blurred high-rise construction site during the blue hour with vibrant teal and amber lights. The image is crisp, high-contrast, and fits a premium enterprise software aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV7W3y7g5tBkf9kUXqPH0X2mz5c1n62-FqfTvP1OEOwaAA7aH9WuOp4A4j63ct_jcAhla6Dwv1WnbgNaC1xDazZ0ELhfTg7vDMt7noo0ZwIy2hEwHbQ-utFm9Eun6CINKaQwKl66k6aNkQE9RUyDZ0u6K3H0BNuDEiAoO29j3i3dBihFwNYpXIhaC0E8Lx6dT1lcJo0qWwQaqZ8_fllNFDTmSAUx2BMAuxV25NfhZA3KLG7dzDjaUknSBccd7sPibmblFsZaR7eoJF"/>
+</div>
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">notifications</button>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile max-w-7xl mx-auto space-y-xl">
+<!-- Welcome Section -->
+<section class="flex flex-col gap-xs mt-4">
+<h1 class="font-display-lg text-display-lg text-on-surface">Vendor Dashboard</h1>
+<p class="font-body-md text-on-surface-variant">Welcome back, Site Solutions Ltd.</p>
+</section>
+<!-- Bento Grid Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Earnings Card -->
+<div class="glass-card rounded-xl p-lg md:col-span-2 relative overflow-hidden">
+<div class="flex justify-between items-start z-10 relative">
+<div>
+<p class="font-label-md text-on-surface-variant uppercase tracking-wider">Total Earnings</p>
+<h2 class="font-display-lg text-display-lg text-primary mt-base">$142,850.00</h2>
+<div class="flex items-center gap-xs mt-base">
+<span class="material-symbols-outlined text-secondary text-sm">trending_up</span>
+<span class="text-secondary font-label-md">+12.4% this month</span>
+</div>
+</div>
+<div class="sparkline-container h-16 w-32">
+<svg class="w-full h-full" viewbox="0 0 100 40">
+<path d="M0,35 Q10,32 20,38 T40,25 T60,30 T80,10 T100,5" fill="none" stroke="#ee9800" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+</div>
+</div>
+<!-- Subtle background glow -->
+<div class="absolute -right-8 -bottom-8 w-32 h-32 bg-secondary/10 blur-3xl rounded-full"></div>
+</div>
+<!-- Quick Stats Column -->
+<div class="grid grid-cols-2 md:grid-cols-1 gap-md">
+<div class="glass-card rounded-xl p-md flex items-center justify-between">
+<div>
+<p class="font-label-md text-on-surface-variant">Active Projects</p>
+<p class="font-display-md text-display-md text-on-surface">12</p>
+</div>
+<span class="bg-primary/10 text-primary p-sm rounded-lg material-symbols-outlined">construction</span>
+</div>
+<div class="glass-card rounded-xl p-md flex items-center justify-between">
+<div>
+<p class="font-label-md text-on-surface-variant">Pending RFQs</p>
+<p class="font-display-md text-display-md text-secondary">08</p>
+</div>
+<span class="bg-secondary/10 text-secondary p-sm rounded-lg material-symbols-outlined">request_quote</span>
+</div>
+</div>
+</div>
+<!-- Quick Actions Row -->
+<section class="flex flex-wrap gap-md">
+<button class="flex items-center gap-sm bg-primary text-on-primary px-lg py-md rounded-full font-label-md font-bold shadow-[0_0_15px_rgba(69,224,232,0.3)] hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+                New RFQ Response
+            </button>
+<button class="flex items-center gap-sm border border-outline-variant text-on-surface px-lg py-md rounded-full font-label-md font-bold hover:bg-surface-container transition-all active:scale-95">
+<span class="material-symbols-outlined">download</span>
+                Earnings Report
+            </button>
+<button class="flex items-center gap-sm border border-outline-variant text-on-surface px-lg py-md rounded-full font-label-md font-bold hover:bg-surface-container transition-all active:scale-95">
+<span class="material-symbols-outlined">support_agent</span>
+                Support
+            </button>
+</section>
+<!-- New RFQs Section -->
+<section class="space-y-md">
+<div class="flex justify-between items-end">
+<h3 class="font-display-sm text-display-sm text-on-surface">New Opportunities</h3>
+<a class="font-label-md text-primary hover:underline" href="#">View All RFQs</a>
+</div>
+<div class="space-y-sm">
+<!-- RFQ Item 1 -->
+<div class="glass-card rounded-xl p-md hover:bg-surface-container-high transition-colors group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div class="flex gap-md items-start">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary">apartment</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-sm">
+<h4 class="font-body-lg font-bold text-on-surface">Concrete Substructure - Terminal 4</h4>
+<span class="bg-primary/10 text-primary text-[10px] px-2 py-0.5 rounded-full uppercase font-bold tracking-tighter">High Priority</span>
+</div>
+<p class="font-body-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                    Heathrow Airport Extension, London
+                                </p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-xl">
+<div class="text-right hidden md:block">
+<p class="font-label-md text-on-surface-variant">Estimated Value</p>
+<p class="font-body-md font-bold text-on-surface">$250k - $310k</p>
+</div>
+<button class="bg-primary-container/20 text-primary px-lg py-sm rounded-lg font-label-md font-bold hover:bg-primary-container/30 transition-colors active:scale-95">
+                                Submit Quote
+                            </button>
+</div>
+</div>
+</div>
+<!-- RFQ Item 2 -->
+<div class="glass-card rounded-xl p-md hover:bg-surface-container-high transition-colors group">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div class="flex gap-md items-start">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 border border-outline-variant/30">
+<span class="material-symbols-outlined text-secondary">bolt</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-sm">
+<h4 class="font-body-lg font-bold text-on-surface">Electrical Fit-out - North Shore Tech Park</h4>
+<span class="bg-secondary/10 text-secondary text-[10px] px-2 py-0.5 rounded-full uppercase font-bold tracking-tighter">Due in 24h</span>
+</div>
+<p class="font-body-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                    Silicon Way, Manchester
+                                </p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-xl">
+<div class="text-right hidden md:block">
+<p class="font-label-md text-on-surface-variant">Estimated Value</p>
+<p class="font-body-md font-bold text-on-surface">$85k - $110k</p>
+</div>
+<button class="bg-primary-container/20 text-primary px-lg py-sm rounded-lg font-label-md font-bold hover:bg-primary-container/30 transition-colors active:scale-95">
+                                Submit Quote
+                            </button>
+</div>
+</div>
+</div>
+<!-- RFQ Item 3 -->
+<div class="glass-card rounded-xl p-md hover:bg-surface-container-high transition-colors group opacity-80">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div class="flex gap-md items-start">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 border border-outline-variant/30">
+<span class="material-symbols-outlined text-outline">architecture</span>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-sm">
+<h4 class="font-body-lg font-bold text-on-surface">Structural Steel Supply - Retail Center</h4>
+</div>
+<p class="font-body-sm text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">location_on</span>
+                                    Birmingham Central
+                                </p>
+</div>
+</div>
+<div class="flex items-center justify-between md:justify-end gap-xl">
+<div class="text-right hidden md:block">
+<p class="font-label-md text-on-surface-variant">Estimated Value</p>
+<p class="font-body-md font-bold text-on-surface">$1.2M - $1.5M</p>
+</div>
+<button class="bg-primary-container/20 text-primary px-lg py-sm rounded-lg font-label-md font-bold hover:bg-primary-container/30 transition-colors active:scale-95">
+                                Submit Quote
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Asymmetric Visual Section -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-lg pb-12">
+<div class="glass-card rounded-xl p-lg flex flex-col justify-center gap-md min-h-[240px]">
+<h3 class="font-display-md text-display-md text-on-surface">Optimize your Bidding</h3>
+<p class="font-body-md text-on-surface-variant">Our new AI analyzer helps you spot gaps in your RFQ responses before you submit. Increase your win rate by up to 30%.</p>
+<button class="self-start text-primary font-label-md flex items-center gap-xs group">
+                    Learn about RKIS Insights
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="rounded-xl overflow-hidden relative min-h-[240px] border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="A futuristic close-up of a digital dashboard displaying complex architectural blueprints and glowing data visualizations. The aesthetic is high-tech HUD, with deep navy and cyan light trails and sharp data nodes. It feels sophisticated, precise, and distinctly focused on modern construction engineering software." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr_tl6Z3PM5NmbdvpWDWwEcX98od4Ncw7Tzsd2BxZNQXEO07xymNR-1jaKOYbGiL-9mqPIexsyyw7B0nzq7UOKv3gNzJic_9mhyF4YounE4a1LS9yPTMVSmkHBqW09gSgZsfluMmC3wQij78Pj4e25z0eXsR1oTSR1BHGm0T83tpRbF_YEDqITh6Bq4mf0IuxWU0YULR6RQjQzg-kjLb_XPun0XE-yVKADkMs7XjX_WyHRuJCxQFaLbT6X6TU_ZJlJxH053WRrsial"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute bottom-md left-md">
+<span class="bg-secondary text-on-secondary px-sm py-1 rounded text-[10px] font-bold uppercase">Featured</span>
+<p class="text-white font-bold mt-1">Smart Blueprints v2.0 Now Live</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Navigation Shell -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden">
+<div class="flex justify-around items-center h-20 px-2 pb-safe w-full">
+<div class="flex flex-col items-center justify-center gap-xs bg-primary-container/20 text-primary rounded-xl px-4 py-1 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-weight="fill">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">construction</span>
+<span class="font-label-md text-label-md">Projects</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">request_quote</span>
+<span class="font-label-md text-label-md">Requests</span>
+</div>
+<div class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Finance</span>
+</div>
+</div>
+</nav>
+<!-- Desktop Sidebar/Nav (Hidden on Mobile) -->
+<div class="hidden md:flex fixed left-0 top-16 bottom-0 w-20 flex-col items-center py-xl gap-xl border-r border-outline-variant/20 bg-surface/50 backdrop-blur-md">
+<div class="w-12 h-12 rounded-xl bg-primary-container/20 text-primary flex items-center justify-center cursor-pointer">
+<span class="material-symbols-outlined" data-weight="fill">home</span>
+</div>
+<div class="w-12 h-12 rounded-xl text-on-surface-variant hover:bg-surface-variant/50 flex items-center justify-center cursor-pointer transition-colors">
+<span class="material-symbols-outlined">construction</span>
+</div>
+<div class="w-12 h-12 rounded-xl text-on-surface-variant hover:bg-surface-variant/50 flex items-center justify-center cursor-pointer transition-colors">
+<span class="material-symbols-outlined">request_quote</span>
+</div>
+<div class="w-12 h-12 rounded-xl text-on-surface-variant hover:bg-surface-variant/50 flex items-center justify-center cursor-pointer transition-colors">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<div class="mt-auto w-12 h-12 rounded-xl text-on-surface-variant hover:bg-surface-variant/50 flex items-center justify-center cursor-pointer transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</div>
+</div>
+<script>
+        // Simple micro-interaction for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.transition = 'transform 0.2s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

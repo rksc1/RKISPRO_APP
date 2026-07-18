@@ -1,0 +1,52 @@
+import type { PaymentDirection, PaymentStatus, PaymentType, Role } from "@/types/auth";
+import type { Json } from "@/types/supabase";
+
+export type PaymentRow = {
+  id: string;
+  project_id: string;
+  customer_id: string;
+  vendor_id: string;
+  payment_type: PaymentType;
+  payment_direction: PaymentDirection;
+  amount: number;
+  status: PaymentStatus;
+  payment_method: string | null;
+  reference_number: string | null;
+  notes: string | null;
+  razorpay_order_id: string | null;
+  razorpay_payment_id: string | null;
+  razorpay_signature: string | null;
+  razorpay_status: string | null;
+  failure_reason: string | null;
+  gateway_response: Json | null;
+  created_by_role: Role;
+  created_by_id: string | null;
+  paid_at: string | null;
+  created_at: string;
+  updated_at: string;
+};
+
+export type Payment = {
+  id: string;
+  projectId: string;
+  customerId: string;
+  vendorId: string;
+  paymentType: PaymentType;
+  paymentDirection: PaymentDirection;
+  amount: number;
+  status: PaymentStatus;
+  paymentMethod: string | null;
+  referenceNumber: string | null;
+  notes: string | null;
+  razorpayOrderId: string | null;
+  razorpayPaymentId: string | null;
+  razorpaySignature: string | null;
+  razorpayStatus: string | null;
+  failureReason: string | null;
+  gatewayResponse: Json | null;
+  createdByRole: Role;
+  createdById: string | null;
+  paidAt: string | null;
+  createdAt: string;
+  updatedAt: string;
+};

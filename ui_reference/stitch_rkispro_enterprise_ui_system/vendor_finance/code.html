@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RKISPro - Vendor Finance</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #001620;
+            color: #cce6f7;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        .glass-card {
+            background: rgba(10, 24, 37, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(30, 52, 68, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .teal-glow {
+            box-shadow: 0 0 15px rgba(69, 224, 232, 0.2);
+        }
+
+        .chart-gradient {
+            background: linear-gradient(180deg, rgba(69, 224, 232, 0.15) 0%, rgba(69, 224, 232, 0) 100%);
+        }
+
+        .mesh-gradient-bg {
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 196, 204, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(238, 152, 0, 0.03) 0px, transparent 50%);
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #1e3844;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#00696e",
+                    "on-primary": "#003739",
+                    "tertiary-container": "#00c4cc",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed": "#2a1700",
+                    "secondary": "#ffb95f",
+                    "primary-fixed": "#63f7ff",
+                    "on-error-container": "#ffdad6",
+                    "primary-container": "#00c4cc",
+                    "tertiary": "#00e2eb",
+                    "on-tertiary": "#003739",
+                    "on-secondary-fixed-variant": "#653e00",
+                    "surface-tint": "#3cdae2",
+                    "on-primary-container": "#004c4f",
+                    "secondary-container": "#ee9800",
+                    "error-container": "#93000a",
+                    "inverse-surface": "#cce6f7",
+                    "surface-container-highest": "#1e3844",
+                    "tertiary-fixed-dim": "#00dce4",
+                    "on-tertiary-container": "#004c4f",
+                    "on-surface": "#cce6f7",
+                    "surface-container-low": "#021e2a",
+                    "on-tertiary-fixed": "#002021",
+                    "on-secondary-container": "#5b3800",
+                    "primary": "#45e0e8",
+                    "outline": "#859394",
+                    "surface-container": "#06222e",
+                    "secondary-fixed": "#ffddb8",
+                    "inverse-on-surface": "#1a3340",
+                    "secondary-fixed-dim": "#ffb95f",
+                    "surface-dim": "#001620",
+                    "surface-bright": "#233c49",
+                    "on-secondary": "#472a00",
+                    "surface": "#001620",
+                    "on-error": "#690005",
+                    "primary-fixed-dim": "#3cdae2",
+                    "background": "#001620",
+                    "on-background": "#cce6f7",
+                    "surface-container-high": "#132d39",
+                    "on-tertiary-fixed-variant": "#004f53",
+                    "surface-variant": "#1e3844",
+                    "on-primary-fixed": "#002021",
+                    "surface-container-lowest": "#001019",
+                    "on-primary-fixed-variant": "#004f53",
+                    "outline-variant": "#3c494a",
+                    "on-surface-variant": "#bbc9ca",
+                    "tertiary-fixed": "#61f7ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "base": "4px",
+                    "margin-mobile": "16px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "sm": "8px",
+                    "lg": "24px",
+                    "gutter": "16px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "display-md": ["Plus Jakarta Sans"],
+                    "body-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Inter"],
+                    "caption": ["Inter"],
+                    "display-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="mesh-gradient-bg min-h-screen pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm flex items-center justify-between px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-md">
+<span class="font-display-md text-display-md font-bold text-primary">RKISPro</span>
+</div>
+<div class="hidden md:flex items-center gap-xl">
+<nav class="flex items-center gap-lg">
+<a class="font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Projects</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:opacity-80 transition-opacity" href="#">Requests</a>
+<a class="font-label-md text-label-md text-primary hover:opacity-80 transition-opacity font-semibold" href="#">Finance</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:opacity-80 transition-opacity active:scale-95">notifications</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant/30 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a business vendor executive for a construction technology platform. High-end lighting, dark studio background, wearing a clean charcoal grey modern uniform. The image is crisp, detailed, and conveys trust and professional excellence within a dark-mode B2B interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIfEKrd0SkgjUey3NEic-0RRK0QAXX9N0u05oS9EeqtR7pqKaWWFqPFl0t2XxqaNSRokGqX32_SuweVwbFdpLtpXXaGE3y1r81D6WzXTzOLELLXvfAVWul-XCllQ-HHbgVt17Q33Ee-UD5dIZxzNR9PaVoko8r2DrpdC-okTsLZy8zxP3yDRF5bB5h7sc838eiXC3msnwOlXDeFauggUymulVeDfQGAmBjvGmXtd7ncj0UGj1RTsCXgsCNUO_-dSIdwxgblTXcdbGx"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto space-y-xl">
+<!-- Welcome & Primary Action -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-lg">
+<div class="space-y-xs">
+<p class="font-label-md text-label-md text-primary uppercase tracking-widest">Financial Overview</p>
+<h1 class="font-display-lg text-display-lg text-on-surface">Revenue Dashboard</h1>
+</div>
+<button class="flex items-center justify-center gap-sm bg-secondary-container text-on-secondary-container px-lg py-md rounded-full font-label-md text-label-md font-bold transition-all hover:brightness-110 active:scale-95 shadow-[0_4px_12px_rgba(238,152,0,0.3)]">
+<span class="material-symbols-outlined text-[20px]">account_balance_wallet</span>
+                REQUEST PAYOUT
+            </button>
+</div>
+<!-- KPI Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md lg:gap-lg">
+<!-- Earned -->
+<div class="glass-card rounded-xl p-lg flex flex-col gap-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Total Earned</span>
+<div class="p-xs bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary text-[20px]">payments</span>
+</div>
+</div>
+<div class="space-y-xs">
+<h2 class="font-display-md text-display-md text-on-surface">$124,500.00</h2>
+<p class="text-primary text-[12px] flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                        +12.5% from last month
+                    </p>
+</div>
+</div>
+<!-- Paid -->
+<div class="glass-card rounded-xl p-lg flex flex-col gap-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Cleared Payouts</span>
+<div class="p-xs bg-tertiary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-tertiary text-[20px]">verified</span>
+</div>
+</div>
+<div class="space-y-xs">
+<h2 class="font-display-md text-display-md text-on-surface">$98,240.00</h2>
+<p class="text-on-surface-variant text-[12px]">Last payout: Oct 14, 2023</p>
+</div>
+</div>
+<!-- Pending -->
+<div class="glass-card rounded-xl p-lg flex flex-col gap-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Pending Approval</span>
+<div class="p-xs bg-secondary/10 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[20px]">schedule</span>
+</div>
+</div>
+<div class="space-y-xs">
+<h2 class="font-display-md text-display-md text-on-surface">$26,260.00</h2>
+<p class="text-secondary text-[12px]">4 transactions in review</p>
+</div>
+</div>
+</div>
+<!-- Main Content Area: Chart + Transactions -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+<!-- Earnings Chart (2/3 width on desktop) -->
+<div class="lg:col-span-2 glass-card rounded-xl p-lg flex flex-col gap-lg">
+<div class="flex items-center justify-between">
+<h3 class="font-display-sm text-display-sm text-on-surface">Earnings Growth</h3>
+<div class="flex bg-surface-container-low rounded-lg p-1">
+<button class="px-md py-1 rounded-md bg-primary-container/20 text-primary text-label-md font-medium">6M</button>
+<button class="px-md py-1 rounded-md text-on-surface-variant text-label-md hover:text-on-surface transition-colors">1Y</button>
+<button class="px-md py-1 rounded-md text-on-surface-variant text-label-md hover:text-on-surface transition-colors">ALL</button>
+</div>
+</div>
+<div class="relative h-[300px] w-full mt-md">
+<!-- Fake SVG Chart -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 1000 300">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#45e0e8" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#45e0e8" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<path d="M0,250 Q100,230 200,260 T400,180 T600,120 T800,140 T1000,60 L1000,300 L0,300 Z" fill="url(#chartGradient)"></path>
+<path d="M0,250 Q100,230 200,260 T400,180 T600,120 T800,140 T1000,60" fill="none" stroke="#45e0e8" stroke-linecap="round" stroke-width="3"></path>
+<!-- Grid Lines -->
+<line stroke="#1e3844" stroke-dasharray="4" x1="0" x2="1000" y1="50" y2="50"></line>
+<line stroke="#1e3844" stroke-dasharray="4" x1="0" x2="1000" y1="150" y2="150"></line>
+<line stroke="#1e3844" stroke-dasharray="4" x1="0" x2="1000" y1="250" y2="250"></line>
+</svg>
+<!-- Axis Labels -->
+<div class="absolute bottom-[-24px] w-full flex justify-between text-[10px] text-on-surface-variant uppercase tracking-wider font-medium">
+<span>May</span>
+<span>Jun</span>
+<span>Jul</span>
+<span>Aug</span>
+<span>Sep</span>
+<span>Oct</span>
+</div>
+</div>
+</div>
+<!-- Recent Transactions (1/3 width on desktop) -->
+<div class="glass-card rounded-xl flex flex-col overflow-hidden">
+<div class="p-lg border-b border-outline-variant/20 flex items-center justify-between">
+<h3 class="font-display-sm text-display-sm text-on-surface">Recent</h3>
+<button class="text-primary text-label-md font-semibold hover:underline">View All</button>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar">
+<!-- Transaction Item -->
+<div class="p-lg flex items-center justify-between border-b border-outline-variant/10 hover:bg-surface-variant/20 transition-colors cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">engineering</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-semibold">Skyscraper-1 Foundation</span>
+<span class="text-caption text-on-surface-variant">Milestone 2 Cleared</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-body-md text-on-surface font-bold">+$12,400</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-tight bg-primary/10 text-primary">Paid</span>
+</div>
+</div>
+<!-- Transaction Item -->
+<div class="p-lg flex items-center justify-between border-b border-outline-variant/10 hover:bg-surface-variant/20 transition-colors cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">request_quote</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-semibold">Bridge Material Batch 4</span>
+<span class="text-caption text-on-surface-variant">Invoicing Phase</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-body-md text-on-surface font-bold">+$8,900</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-tight bg-secondary/10 text-secondary">Pending</span>
+</div>
+</div>
+<!-- Transaction Item -->
+<div class="p-lg flex items-center justify-between border-b border-outline-variant/10 hover:bg-surface-variant/20 transition-colors cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">architecture</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-semibold">Civil Works Phase 1</span>
+<span class="text-caption text-on-surface-variant">Direct Deposit</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-body-md text-on-surface font-bold">+$24,000</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-tight bg-primary/10 text-primary">Paid</span>
+</div>
+</div>
+<!-- Transaction Item -->
+<div class="p-lg flex items-center justify-between border-b border-outline-variant/10 hover:bg-surface-variant/20 transition-colors cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-error">warning</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-semibold">Pipeline Inspection A</span>
+<span class="text-caption text-on-surface-variant">Action Required</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-body-md text-on-surface font-bold">$1,200</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-tight bg-error/10 text-error">Disputed</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Info Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg pb-xl">
+<div class="glass-card rounded-xl p-lg flex items-center gap-lg">
+<div class="w-16 h-16 rounded-full bg-secondary-container/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary text-[32px]">shield_person</span>
+</div>
+<div class="space-y-1">
+<h4 class="font-display-sm text-display-sm text-on-surface">Escrow Protection</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Your earnings are secured in RKISPro Escrow. Payments are released upon milestone verification.</p>
+</div>
+</div>
+<div class="glass-card rounded-xl p-lg flex items-center gap-lg">
+<div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary text-[32px]">contact_support</span>
+</div>
+<div class="space-y-1">
+<h4 class="font-display-sm text-display-sm text-on-surface">Finance Support</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Need help with an invoice? Connect with our B2B dedicated account managers 24/7.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] rounded-t-xl flex justify-around items-center h-20 px-2 pb-safe w-full">
+<a class="flex flex-col items-center justify-center gap-xs text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-xs text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">construction</span>
+<span class="font-label-md text-label-md">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-xs text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">request_quote</span>
+<span class="font-label-md text-label-md">Requests</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-xs bg-primary-container/20 text-primary rounded-xl px-4 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Finance</span>
+</a>
+</nav>
+<script>
+        // Simple Micro-interaction: Update Chart on button toggle
+        const buttons = document.querySelectorAll('.bg-surface-container-low button');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => {
+                    b.classList.remove('bg-primary-container/20', 'text-primary');
+                    b.classList.add('text-on-surface-variant');
+                });
+                btn.classList.add('bg-primary-container/20', 'text-primary');
+                btn.classList.remove('text-on-surface-variant');
+                
+                // Animating the chart path subtly
+                const path = document.querySelector('svg path[fill="none"]');
+                const fill = document.querySelector('svg path[fill="url(#chartGradient)"]');
+                path.style.opacity = '0';
+                fill.style.opacity = '0';
+                
+                setTimeout(() => {
+                    path.style.transition = 'opacity 0.5s ease-in-out';
+                    fill.style.transition = 'opacity 0.5s ease-in-out';
+                    path.style.opacity = '1';
+                    fill.style.opacity = '1';
+                }, 100);
+            });
+        });
+
+        // Dashboard Animation Entry
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.glass-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `all 0.6s cubic-bezier(0.23, 1, 0.32, 1) ${index * 0.1}s`;
+                
+                requestAnimationFrame(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body></html>

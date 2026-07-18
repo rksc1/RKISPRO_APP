@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --glass-bg: rgba(10, 24, 37, 0.7);
+            --glass-border: rgba(30, 52, 68, 0.4);
+        }
+        body {
+            background-color: #001620;
+            color: #cce6f7;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-display { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+        }
+        .premium-glow {
+            box-shadow: 0 0 20px rgba(69, 224, 232, 0.15);
+        }
+        .mesh-gradient {
+            background: radial-gradient(at 0% 0%, rgba(61, 218, 226, 0.15) 0px, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(238, 152, 0, 0.1) 0px, transparent 50%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#00696e",
+                        "on-primary": "#003739",
+                        "tertiary-container": "#00c4cc",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#2a1700",
+                        "secondary": "#ffb95f",
+                        "primary-fixed": "#63f7ff",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#00c4cc",
+                        "tertiary": "#00e2eb",
+                        "on-tertiary": "#003739",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "surface-tint": "#3cdae2",
+                        "on-primary-container": "#004c4f",
+                        "secondary-container": "#ee9800",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#cce6f7",
+                        "surface-container-highest": "#1e3844",
+                        "tertiary-fixed-dim": "#00dce4",
+                        "on-tertiary-container": "#004c4f",
+                        "on-surface": "#cce6f7",
+                        "surface-container-low": "#021e2a",
+                        "on-tertiary-fixed": "#002021",
+                        "on-secondary-container": "#5b3800",
+                        "primary": "#45e0e8",
+                        "outline": "#859394",
+                        "surface-container": "#06222e",
+                        "secondary-fixed": "#ffddb8",
+                        "inverse-on-surface": "#1a3340",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "surface-dim": "#001620",
+                        "surface-bright": "#233c49",
+                        "on-secondary": "#472a00",
+                        "surface": "#001620",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#3cdae2",
+                        "background": "#001620",
+                        "on-background": "#cce6f7",
+                        "surface-container-high": "#132d39",
+                        "on-tertiary-fixed-variant": "#004f53",
+                        "surface-variant": "#1e3844",
+                        "on-primary-fixed": "#002021",
+                        "surface-container-lowest": "#001019",
+                        "on-primary-fixed-variant": "#004f53",
+                        "outline-variant": "#3c494a",
+                        "on-surface-variant": "#bbc9ca",
+                        "tertiary-fixed": "#61f7ff"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "display-md": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "display-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "caption": ["11px", {"lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "display-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm flex items-center justify-between px-margin-mobile h-16 md:px-margin-desktop">
+<h1 class="font-display-md text-display-md font-bold text-primary">RKISPro</h1>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full bg-primary-container/30 border border-primary/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional studio headshot of a senior construction project manager with a friendly expression. The lighting is dramatic and cinematic, emphasizing a high-tech dark mode aesthetic with subtle teal rim lighting. The background is a blurred high-end architectural firm interior." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZ0G5arXeCr2nX-Vlgghjd0l1Zt1O64nlP8FAo6A3DCqE2WrgxaWX2mJlfANNT19sieM8aOXR2sVh24quANu00GBCyUVGq3rM8fkMZZvEZljBaWfYRBppuHk-mdqwD6s0miEMZt7C_vnoyZdqt5k4sdISb6b-_KEMZRC7fvVk996hB_yvFJUoBu9l89ETF4Rv56X7f0FIRJ2hY3wyMcYbDwm_3mWRcsL4PH_YnO9fNDZzbfkNCZe60OVzJeYv01G8prO_VPNyRK4H5"/>
+</div>
+</div>
+</header>
+<main class="flex-grow pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-4xl mx-auto w-full mesh-gradient">
+<!-- Profile Header Section -->
+<section class="flex flex-col items-center mb-xl">
+<div class="relative group cursor-pointer">
+<div class="w-32 h-32 rounded-full border-4 border-primary/30 p-1 premium-glow">
+<div class="w-full h-full rounded-full overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a male professional in the construction and logistics industry. He is wearing a dark charcoal polo shirt. The scene is illuminated with cold blue and teal light bars, reflecting the premium RKISPro dark-themed branding. Sharp focus on eyes and facial details." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF61FKlP4hN9MoKlp6tafipTrQjFMuPnmVhPQb8ToT4XvnyGeJuel0g2bll-CVaSKidp8falJHaqfh7ZY-K5Mi05hmtQsB3YBfJgRgoVCqKCGj6eZOAM4XUzNh5I4rkaD1Fk2WTKm3dV5VGW2dIUMa_HIIonIrgqTUyG4TES4vj7wAfhvUMcf-pY2GqUBvE_TM0kFOWEJsDgJTCpWn3iV7QVi_pH4WXvqNTe8Coi5HYtHg9CLBWf93krtPbIn1sq2gYKQs4MJUXLAW"/>
+<!-- Edit Overlay -->
+<div class="absolute inset-0 bg-black/60 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<span class="material-symbols-outlined text-white text-3xl">photo_camera</span>
+<span class="text-[10px] font-bold text-white uppercase tracking-widest mt-1">Change</span>
+</div>
+</div>
+</div>
+<div class="absolute bottom-1 right-1 bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center shadow-lg border-2 border-background">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">edit</span>
+</div>
+</div>
+<div class="mt-lg text-center">
+<h2 class="font-display-lg text-display-lg text-on-surface">Alex Mercer</h2>
+<p class="font-body-md text-on-surface-variant">Senior Project Director • Enterprise Account</p>
+<div class="inline-flex items-center gap-xs mt-sm px-3 py-1 rounded-full bg-primary/10 border border-primary/20">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-md text-primary text-[10px] uppercase tracking-wider">Premium Member</span>
+</div>
+</div>
+</section>
+<!-- Settings List -->
+<div class="space-y-md">
+<!-- Category: Account -->
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="px-lg py-sm bg-surface-container-high/50 border-b border-outline-variant/10">
+<span class="font-label-md text-primary uppercase tracking-[0.2em] text-[10px]">Account Management</span>
+</div>
+<div class="divide-y divide-outline-variant/10">
+<!-- Personal Info -->
+<button class="w-full flex items-center justify-between px-lg py-md hover:bg-surface-container-highest/40 transition-colors group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div class="text-left">
+<p class="font-body-lg text-on-surface font-semibold">Personal Information</p>
+<p class="font-caption text-on-surface-variant">Manage your name, email, and bio</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+<!-- Security -->
+<button class="w-full flex items-center justify-between px-lg py-md hover:bg-surface-container-highest/40 transition-colors group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">security</span>
+</div>
+<div class="text-left">
+<p class="font-body-lg text-on-surface font-semibold">Security &amp; Privacy</p>
+<p class="font-caption text-on-surface-variant">2FA, password, and active sessions</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Category: Preferences -->
+<div class="glass-card rounded-xl overflow-hidden">
+<div class="px-lg py-sm bg-surface-container-high/50 border-b border-outline-variant/10">
+<span class="font-label-md text-primary uppercase tracking-[0.2em] text-[10px]">System Preferences</span>
+</div>
+<div class="divide-y divide-outline-variant/10">
+<!-- Dark Mode Toggle -->
+<div class="w-full flex items-center justify-between px-lg py-md">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">dark_mode</span>
+</div>
+<div class="text-left">
+<p class="font-body-lg text-on-surface font-semibold">Appearance</p>
+<p class="font-caption text-on-surface-variant">Currently using system dark mode</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Notifications -->
+<button class="w-full flex items-center justify-between px-lg py-md hover:bg-surface-container-highest/40 transition-colors group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-outline/10 flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">notifications_active</span>
+</div>
+<div class="text-left">
+<p class="font-body-lg text-on-surface font-semibold">Push Notifications</p>
+<p class="font-caption text-on-surface-variant">Alerts for project updates and bids</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Logout Section -->
+<div class="pt-lg">
+<button class="w-full h-14 glass-card rounded-xl border-red-500/20 flex items-center justify-center gap-sm text-red-400 font-display-sm hover:bg-red-500/10 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'wght' 600;">logout</span>
+                    Logout Account
+                </button>
+<p class="text-center mt-md font-caption text-on-surface-variant/40">RKISPro Version 2.4.0 (Build 902) • Enterprise Tier</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden">
+<div class="flex justify-around items-center h-20 px-2 pb-safe w-full">
+<!-- Home -->
+<button class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 px-4 py-1 rounded-xl transition-all">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</button>
+<!-- Projects -->
+<button class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 px-4 py-1 rounded-xl transition-all">
+<span class="material-symbols-outlined" data-icon="construction">construction</span>
+<span class="font-label-md text-label-md">Projects</span>
+</button>
+<!-- Requests -->
+<button class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 px-4 py-1 rounded-xl transition-all">
+<span class="material-symbols-outlined" data-icon="request_quote">request_quote</span>
+<span class="font-label-md text-label-md">Requests</span>
+</button>
+<!-- Profile (ACTIVE) -->
+<button class="flex flex-col items-center justify-center gap-xs bg-primary-container/20 text-primary rounded-xl px-4 py-1 active:scale-90 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Finance</span>
+</button>
+</div>
+</nav>
+<script>
+        // Micro-interaction for list items
+        document.querySelectorAll('.glass-card button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.style.transform = 'scale(0.995)';
+            });
+            button.addEventListener('mouseup', () => {
+                button.style.transform = 'scale(1)';
+            });
+            button.addEventListener('mouseleave', () => {
+                button.style.transform = 'scale(1)';
+            });
+        });
+
+        // Theme toggle simulation
+        const themeToggle = document.querySelector('input[type="checkbox"]');
+        themeToggle.addEventListener('change', (e) => {
+            const body = document.querySelector('html');
+            if(e.target.checked) {
+                body.classList.add('dark');
+            } else {
+                body.classList.remove('dark');
+            }
+        });
+    </script>
+</body></html>

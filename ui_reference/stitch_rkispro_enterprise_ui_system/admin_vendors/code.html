@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>RKISPro | Admin Vendor Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #001620;
+            color: #cce6f7;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .glass-card {
+            background: rgba(10, 24, 37, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(30, 52, 68, 0.5);
+        }
+        .swipe-container {
+            overflow-x: hidden;
+            position: relative;
+        }
+        .swipe-content {
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+            z-index: 10;
+        }
+        .swipe-action-left, .swipe-action-right {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80px;
+            z-index: 1;
+        }
+        .swipe-action-left { left: 0; }
+        .swipe-action-right { right: 0; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #1e3844; border-radius: 10px; }
+        
+        .mesh-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(69, 224, 232, 0.1) 0%, transparent 70%);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#00696e",
+                        "on-primary": "#003739",
+                        "tertiary-container": "#00c4cc",
+                        "error": "#ffb4ab",
+                        "on-secondary-fixed": "#2a1700",
+                        "secondary": "#ffb95f",
+                        "primary-fixed": "#63f7ff",
+                        "on-error-container": "#ffdad6",
+                        "primary-container": "#00c4cc",
+                        "tertiary": "#00e2eb",
+                        "on-tertiary": "#003739",
+                        "on-secondary-fixed-variant": "#653e00",
+                        "surface-tint": "#3cdae2",
+                        "on-primary-container": "#004c4f",
+                        "secondary-container": "#ee9800",
+                        "error-container": "#93000a",
+                        "inverse-surface": "#cce6f7",
+                        "surface-container-highest": "#1e3844",
+                        "tertiary-fixed-dim": "#00dce4",
+                        "on-tertiary-container": "#004c4f",
+                        "on-surface": "#cce6f7",
+                        "surface-container-low": "#021e2a",
+                        "on-tertiary-fixed": "#002021",
+                        "on-secondary-container": "#5b3800",
+                        "primary": "#45e0e8",
+                        "outline": "#859394",
+                        "surface-container": "#06222e",
+                        "secondary-fixed": "#ffddb8",
+                        "inverse-on-surface": "#1a3340",
+                        "secondary-fixed-dim": "#ffb95f",
+                        "surface-dim": "#001620",
+                        "surface-bright": "#233c49",
+                        "on-secondary": "#472a00",
+                        "surface": "#001620",
+                        "on-error": "#690005",
+                        "primary-fixed-dim": "#3cdae2",
+                        "background": "#001620",
+                        "on-background": "#cce6f7",
+                        "surface-container-high": "#132d39",
+                        "on-tertiary-fixed-variant": "#004f53",
+                        "surface-variant": "#1e3844",
+                        "on-primary-fixed": "#002021",
+                        "surface-container-lowest": "#001019",
+                        "on-primary-fixed-variant": "#004f53",
+                        "outline-variant": "#3c494a",
+                        "on-surface-variant": "#bbc9ca",
+                        "tertiary-fixed": "#61f7ff"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "base": "4px",
+                        "margin-mobile": "16px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "display-md": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "display-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "display-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "caption": ["11px", { "lineHeight": "14px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "display-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-sm flex items-center justify-between px-margin-mobile h-16 w-full">
+<div class="flex items-center gap-sm">
+<h1 class="font-display-md text-display-md font-bold text-primary">RKISPro</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity active:scale-95 transition-transform">notifications</button>
+<div class="w-8 h-8 rounded-full bg-primary-container/20 border border-primary/30 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a senior construction administrator in a modern office, wearing a clean navy blazer. The lighting is crisp and cool-toned, echoing the enterprise software aesthetic with subtle teal accents in the background blurred out. The overall mood is authoritative, precise, and high-tech." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvAAaCDlSIi8-Dc9jzpsbmG8vBz7_7OT_wmW_A1XuuBDhEMXWc3fM2ALvZVTBkAat6MwJ3HMtssxDdeVTtVwN6gHfHYKLrTHjVCNI7Llme8x9L9RzD6a81eZ8xNNUC4Fg5Ektgj7Z4jP6ySTJyAvCRHnyaPvxKULfCtjqvizOZ-Lr4EXvGgzROGUJKN6-exDC5-oPb9tdjoQPMPe7iY-wu-1HZ2TutUXxl_k9Rt2CGE3QYb53w91F1JXMP3RxvZYv7JsU1Jym176jr"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-20 px-margin-mobile max-w-5xl mx-auto">
+<!-- Welcome & Stats Section -->
+<section class="mt-lg mb-xl">
+<h2 class="font-display-lg text-display-lg mb-base text-on-surface">Vendor Management</h2>
+<p class="text-on-surface-variant font-body-sm mb-lg">Manage, approve, and audit construction vendor partners.</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-md">
+<div class="glass-card p-md rounded-xl">
+<span class="text-caption text-on-surface-variant block mb-xs uppercase tracking-wider">Total Vendors</span>
+<div class="text-display-sm text-primary">1,284</div>
+</div>
+<div class="glass-card p-md rounded-xl">
+<span class="text-caption text-on-surface-variant block mb-xs uppercase tracking-wider">Pending Approval</span>
+<div class="text-display-sm text-secondary">24</div>
+</div>
+<div class="glass-card p-md rounded-xl">
+<span class="text-caption text-on-surface-variant block mb-xs uppercase tracking-wider">Active Status</span>
+<div class="text-display-sm text-tertiary">1,142</div>
+</div>
+<div class="glass-card p-md rounded-xl border-error/20">
+<span class="text-caption text-on-surface-variant block mb-xs uppercase tracking-wider">Flagged</span>
+<div class="text-display-sm text-error">18</div>
+</div>
+</div>
+</section>
+<!-- Search & Filters -->
+<section class="mb-lg">
+<div class="glass-card p-sm rounded-xl flex flex-col md:flex-row gap-sm items-center">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full bg-surface-container-lowest border-outline-variant/30 text-on-surface pl-10 pr-4 py-2 rounded-lg focus:ring-1 focus:ring-primary focus:border-primary transition-all font-body-md placeholder:text-outline-variant" placeholder="Search by name, trade, or ID..." type="text"/>
+</div>
+<div class="flex gap-sm w-full md:w-auto">
+<button class="flex items-center gap-xs px-4 py-2 bg-surface-container-high rounded-lg border border-outline-variant/20 hover:bg-surface-variant/50 transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+<span class="text-label-md">Filters</span>
+</button>
+<button class="flex items-center gap-xs px-4 py-2 bg-primary text-on-primary rounded-lg font-label-md font-bold hover:shadow-[0_0_10px_rgba(69,224,232,0.4)] transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span class="hidden sm:inline">Add Vendor</span>
+</button>
+</div>
+</div>
+<div class="flex gap-xs mt-md overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-4 py-1.5 rounded-full bg-primary-container text-on-primary-container text-label-md font-semibold">All</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-label-md hover:bg-surface-variant">General Contractors</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-label-md hover:bg-surface-variant">Electrical</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-label-md hover:bg-surface-variant">Plumbing</button>
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-on-surface-variant text-label-md hover:bg-surface-variant">Masonry</button>
+</div>
+</section>
+<!-- Vendor List -->
+<section class="space-y-md">
+<div class="flex items-center justify-between px-2 mb-2">
+<span class="text-label-md text-outline font-semibold uppercase tracking-widest">Active Vendor Partners</span>
+<span class="text-caption text-outline">Swipe left to suspend • Swipe right to approve</span>
+</div>
+<!-- Vendor Card 1 -->
+<div class="swipe-container rounded-xl">
+<div class="swipe-action-left bg-error-container rounded-l-xl">
+<span class="material-symbols-outlined text-white">block</span>
+</div>
+<div class="swipe-action-right bg-primary-container rounded-r-xl">
+<span class="material-symbols-outlined text-on-primary-container">verified</span>
+</div>
+<div class="swipe-content glass-card p-md rounded-xl flex items-center gap-md" ontouchend="handleTouchEnd(this, event)" ontouchmove="handleTouchMove(this, event)" ontouchstart="handleTouchStart(this, event)">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A macro close-up of a premium architectural firm logo engraved in brushed steel, reflecting soft teal and navy light. The setting is a sophisticated modern lobby with glass partitions and subtle industrial textures. The image uses a shallow depth of field to emphasize the high-end B2B professional environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4bXtwKaDsVaqaxkbiQAsY5772YpIdz_mI2SXkIOP4JG8p9vtJ5sH5erNr94CQUZmQVSLQdnBFk1rOvOWhprAY4zSdlgtGL7VxqQ24A4mAD_5hu4gNk24ckaKgCGVi4b53ImI7CowV8ZWJrOgVPDbNovpBoON2CCNNiZBLVW883anWy4YHazqVFTCd0FwyGQMNGHmC4eRBBMnIhh_-wW6rHjXkcwltjUEBAYFo7esTckZEWKmUnhtgISGcSZMXLqQ0sVyKex9HDUUO"/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center justify-between mb-1">
+<h3 class="font-display-sm text-on-surface leading-tight">Apex Structural Ltd.</h3>
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary text-[10px] font-bold uppercase border border-primary/20">Active</span>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-md font-semibold text-secondary">4.9</span>
+</div>
+<span class="text-caption">Structural Engineering</span>
+</div>
+</div>
+<div class="hidden md:flex flex-col items-end">
+<div class="text-label-md text-on-surface">$1.2M Total Vol.</div>
+<div class="text-caption text-outline-variant">Partner since 2021</div>
+</div>
+<button class="material-symbols-outlined text-outline-variant hover:text-primary transition-colors">chevron_right</button>
+</div>
+</div>
+<!-- Vendor Card 2 -->
+<div class="swipe-container rounded-xl">
+<div class="swipe-action-left bg-error-container rounded-l-xl">
+<span class="material-symbols-outlined text-white">block</span>
+</div>
+<div class="swipe-action-right bg-primary-container rounded-r-xl">
+<span class="material-symbols-outlined text-on-primary-container">verified</span>
+</div>
+<div class="swipe-content glass-card p-md rounded-xl flex items-center gap-md" ontouchend="handleTouchEnd(this, event)" ontouchmove="handleTouchMove(this, event)" ontouchstart="handleTouchStart(this, event)">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="An abstract view of construction blueprints and a high-tech tablet displaying a digital twin of a building. The scene is illuminated by a futuristic teal glow, highlighting the precision and technological advancement of the construction industry. The background is a dark, sophisticated navy, creating a premium professional atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYIBuE9svGNJvK0H_SOvN4OdwIRghkn6EIJ8kfg-6hyRSMUlXcWju_aJ89UFbfE2z4ly0dCdqS6SBkx8hJeNgi2nyvf0zzB0GdlcTMyjvUpckuGQbrMWnN2Wzxc9hf_Xu9j1U-WhR_6-3G-cU7QVAJF3ECzXPOuHHakASVYXrbgyI9G5hSPWCA5U80IBsIg3e4QVzfFngj3GKXJtNl0kH-21lmzjv-ZFkzUUTZykQL_xSTsURMTgKL2MqvdR6I9zovSzD2yA3MZCxg"/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center justify-between mb-1">
+<h3 class="font-display-sm text-on-surface leading-tight">IronWorks Industrial</h3>
+<span class="px-2 py-0.5 rounded bg-secondary/10 text-secondary text-[10px] font-bold uppercase border border-secondary/20">Pending</span>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-md font-semibold text-secondary">4.2</span>
+</div>
+<span class="text-caption">Steel Fabrication</span>
+</div>
+</div>
+<div class="hidden md:flex flex-col items-end">
+<div class="text-label-md text-on-surface">$450k Total Vol.</div>
+<div class="text-caption text-outline-variant">Applied 2d ago</div>
+</div>
+<button class="material-symbols-outlined text-outline-variant hover:text-primary transition-colors">chevron_right</button>
+</div>
+</div>
+<!-- Vendor Card 3 -->
+<div class="swipe-container rounded-xl">
+<div class="swipe-action-left bg-error-container rounded-l-xl">
+<span class="material-symbols-outlined text-white">block</span>
+</div>
+<div class="swipe-action-right bg-primary-container rounded-r-xl">
+<span class="material-symbols-outlined text-on-primary-container">verified</span>
+</div>
+<div class="swipe-content glass-card p-md rounded-xl flex items-center gap-md" ontouchend="handleTouchEnd(this, event)" ontouchmove="handleTouchMove(this, event)" ontouchstart="handleTouchStart(this, event)">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A clean, minimalist composition of electrical wiring components and a high-end digital multimeter resting on a dark slate surface. The lighting is focused, with sharp teal highlights reflecting off the metallic parts, suggesting precision engineering and professional expertise in the electrical trade. The overall mood is modern and trustworthy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuATtFPC3UjyiXKq5hMG2w6UR6s4Nblta-0SGeqwmt_O1_HVTW7LURQQrRDprQ2dcOP4OCGdSLh_sUpzfyl5uVB7GqlKmRK18EWam9eWm5GD5v8Wr9nmghmRJTUHh3Y2HR0OGvkH-ETPcYmqI_PKrAsserC7CJKcHB0xOCi2NKF4g7k3oRBmR_LWvrOmAcSWKHFxOodoJBft_3Jw4OlTEWdeiHVpGVzLsbnLUwshTKLL--cHgt00Fi9v7KU8Y8e8mKJE4v86EIaVIHiJ"/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center justify-between mb-1">
+<h3 class="font-display-sm text-on-surface leading-tight">VoltStream Systems</h3>
+<span class="px-2 py-0.5 rounded bg-primary/10 text-primary text-[10px] font-bold uppercase border border-primary/20">Active</span>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-md font-semibold text-secondary">4.7</span>
+</div>
+<span class="text-caption">Electrical Contracting</span>
+</div>
+</div>
+<div class="hidden md:flex flex-col items-end">
+<div class="text-label-md text-on-surface">$820k Total Vol.</div>
+<div class="text-caption text-outline-variant">Partner since 2019</div>
+</div>
+<button class="material-symbols-outlined text-outline-variant hover:text-primary transition-colors">chevron_right</button>
+</div>
+</div>
+<!-- Vendor Card 4 -->
+<div class="swipe-container rounded-xl">
+<div class="swipe-action-left bg-error-container rounded-l-xl">
+<span class="material-symbols-outlined text-white">block</span>
+</div>
+<div class="swipe-action-right bg-primary-container rounded-r-xl">
+<span class="material-symbols-outlined text-on-primary-container">verified</span>
+</div>
+<div class="swipe-content glass-card p-md rounded-xl flex items-center gap-md" ontouchend="handleTouchEnd(this, event)" ontouchmove="handleTouchMove(this, event)" ontouchstart="handleTouchStart(this, event)">
+<div class="w-12 h-12 rounded-lg bg-surface-variant flex-shrink-0 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional plumber's high-end toolset arranged neatly in a specialized hard-shell case. The tools are clean and reflect a cool ambient light, with a deep navy and teal color palette throughout the scene. The image conveys a sense of high-performance tools and meticulous professional standards for a B2B marketplace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5ZcpF6_-xFlsLon2okoItLXzNAm9SLYBQb_2vJeldQq2mA9vSU4b6MmoF_bmUrf0SClPSA2GLwbrztZ_Qths6jsZMNwj31UyfGYgviDuSijul5PeM6405PvJ2BM8x_6nvHbsl_yxcDiYldBf_lL31mYG5FiCkvJ3TD_y1Ebve_HvBNzjY2hv_s-Cir4QaC8cDcUxlCjgZRAZj7_Df1dEpUytAb0_h78-cYGMggRjoR5oHDQ_0Mg5elEevU0g_NJ64HbHbJxfHrZ9m"/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center justify-between mb-1">
+<h3 class="font-display-sm text-on-surface leading-tight">MasterPlumb Pro</h3>
+<span class="px-2 py-0.5 rounded bg-error/10 text-error text-[10px] font-bold uppercase border border-error/20">Flagged</span>
+</div>
+<div class="flex items-center gap-md text-on-surface-variant">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-label-md font-semibold text-secondary">3.8</span>
+</div>
+<span class="text-caption">Plumbing &amp; HVAC</span>
+</div>
+</div>
+<div class="hidden md:flex flex-col items-end">
+<div class="text-label-md text-on-surface">$2.4M Total Vol.</div>
+<div class="text-caption text-outline-variant">Under Audit</div>
+</div>
+<button class="material-symbols-outlined text-outline-variant hover:text-primary transition-colors">chevron_right</button>
+</div>
+</div>
+</section>
+<!-- Audit Trail / Bento Section -->
+<section class="mt-xl mb-xl">
+<h2 class="font-display-sm text-display-sm mb-md text-on-surface">Recent Activity</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="md:col-span-2 glass-card p-lg rounded-xl overflow-hidden relative">
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl"></div>
+<h3 class="font-label-md uppercase tracking-widest text-outline-variant mb-lg">Approval Queue Activity</h3>
+<div class="space-y-md">
+<div class="flex gap-md">
+<div class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
+<div>
+<p class="text-body-md text-on-surface"><span class="font-bold text-primary">System</span> automatically approved 4 renewals</p>
+<p class="text-caption text-outline-variant">14 minutes ago</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="w-1.5 h-1.5 rounded-full bg-secondary mt-2"></div>
+<div>
+<p class="text-body-md text-on-surface"><span class="font-bold">David Chen</span> requested review for "Titan Excavations"</p>
+<p class="text-caption text-outline-variant">2 hours ago</p>
+</div>
+</div>
+<div class="flex gap-md">
+<div class="w-1.5 h-1.5 rounded-full bg-error mt-2"></div>
+<div>
+<p class="text-body-md text-on-surface">Certification expired for <span class="font-bold">BuildRight Group</span></p>
+<p class="text-caption text-outline-variant">5 hours ago</p>
+</div>
+</div>
+</div>
+</div>
+<div class="glass-card p-lg rounded-xl flex flex-col justify-between border-primary/20">
+<div>
+<h3 class="font-label-md uppercase tracking-widest text-outline-variant mb-xs">Network Health</h3>
+<div class="text-[48px] font-bold text-primary">94%</div>
+<p class="text-caption text-on-surface-variant mt-xs">Compliant vendors across all active projects.</p>
+</div>
+<button class="w-full mt-md py-2 bg-surface-container-highest rounded-lg text-primary text-label-md font-bold border border-primary/20 hover:bg-primary/10 transition-colors">Run Audit Report</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface-container/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] rounded-t-xl flex justify-around items-center h-20 px-2 pb-safe w-full">
+<a class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">construction</span>
+<span class="font-label-md text-label-md">Projects</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-xs text-on-surface-variant hover:bg-surface-variant/50 transition-colors active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">request_quote</span>
+<span class="font-label-md text-label-md">Requests</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-xs bg-primary-container/20 text-primary rounded-xl px-4 py-1 active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-md text-label-md">Vendors</span>
+</a>
+</nav>
+<script>
+        let startX = 0;
+        let currentTranslate = 0;
+        let isDragging = false;
+
+        function handleTouchStart(el, event) {
+            startX = event.touches[0].clientX;
+            isDragging = true;
+            el.style.transition = 'none';
+        }
+
+        function handleTouchMove(el, event) {
+            if (!isDragging) return;
+            const currentX = event.touches[0].clientX;
+            const diff = currentX - startX;
+            
+            // Limit swiping to a reasonable range
+            if (Math.abs(diff) < 100) {
+                currentTranslate = diff;
+                el.style.transform = `translateX(${currentTranslate}px)`;
+            }
+        }
+
+        function handleTouchEnd(el, event) {
+            isDragging = false;
+            el.style.transition = 'transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1)';
+            
+            if (currentTranslate > 60) {
+                // Success action
+                el.style.transform = `translateX(100%)`;
+                setTimeout(() => {
+                    el.closest('.swipe-container').style.opacity = '0';
+                    setTimeout(() => el.closest('.swipe-container').remove(), 300);
+                }, 300);
+            } else if (currentTranslate < -60) {
+                // Suspend action
+                el.style.transform = `translateX(-100%)`;
+                setTimeout(() => {
+                    el.closest('.swipe-container').style.opacity = '0';
+                    setTimeout(() => el.closest('.swipe-container').remove(), 300);
+                }, 300);
+            } else {
+                el.style.transform = `translateX(0px)`;
+            }
+            currentTranslate = 0;
+        }
+
+        // Search highlight interaction
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-1', 'ring-primary');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-1', 'ring-primary');
+        });
+    </script>
+</body></html>
